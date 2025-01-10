@@ -19,5 +19,20 @@ public class FireMage extends Adventurer{
     this("Roku");
   }
 
-  public String getSpecialName
+  public String getSpecialName(){
+    return "rage";
+  }
+
+  public int getSpecial(){
+    return rage;
+  }
+
+  public int getSpecialMax(){
+    return rageMax;
+  }
+
+  public void setSpecial(int n){
+    rage = n;
+  }
+
 }
