@@ -6,4 +6,18 @@ public class FireMage extends Adventurer{
     rage = 0;
     preferredLanguage = language;
   }
+
+  public FireMage(String name, int hp){
+    this(name, hp, "english");
+  }
+
+  public FireMage(String name){
+    this(name, 18);
+  }
+
+  public FireMage(){
+    this("Roku");
+  }
+
+  public String getSpecialName
 }
