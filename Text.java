@@ -18,6 +18,10 @@ public class Text{
   public static final int UNDERLINE = 4;
   public static final int INVERTED = 7;
 
+  public static int  background(int color){
+    return color + 10;
+  }
+
   /*Reset colors*/
   public static void reset(){
     System.out.print("\u001b[0m");
