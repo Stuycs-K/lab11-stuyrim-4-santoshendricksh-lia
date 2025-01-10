@@ -7,7 +7,8 @@ public class Game{
 
   public static void main(String[] args) {
     Text.clear();
-    drawText("yo mama fat", 4, 5);
+    //drawText("yo mama fat", 4, 5);
+    TextBox(4,4,5,16, "jesus christ i was walking through the store and got jumped");
     wait(2000);
     Text.clear();
     Text.reset();
@@ -82,10 +83,11 @@ public class Game{
     }
     String boxText = text + padding;
 
-    Text.go(row, col);
+    //Text.go(row, col);
 
     for (int i = 0; i < height; i++) {
-      System.out.println(boxText.substring(i * width, (i + 1) * width));
+      //System.out.print(boxText.substring(i * width, (i + 1) * width));
+      drawText(boxText.substring(i * width, (i + 1) * width), col + i, row);
     }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
