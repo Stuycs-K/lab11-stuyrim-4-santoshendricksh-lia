@@ -14,6 +14,26 @@ public class Game{
   public static void drawBackground(){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
+    for (int count = 1; count < 31; count++){
+      if (count == 1 || count == 30){
+        for (int innerCount = 1; innerCount < 81; innerCount++){
+          go(count, innerCount);
+          color(WHITE, background(WHITE));
+          System.out.print(".");
+          System.out.print(RESET);
+        }
+      }
+      else{
+        go(count, 1);
+        color(WHITE, background(WHITE));
+        System.out.print(".");
+        System.out.print(WHITE);
+        go(count, 80);
+        color(WHITE, background(WHITE));
+        System.out.print(".");
+        System.out.print(RESET);
+      }
+    }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
@@ -73,6 +93,7 @@ public class Game{
     String output = String.format("%2s", hp+"")+"/"+String.format("%2s", maxHP+"");
     //COLORIZE THE OUTPUT IF HIGH/LOW:
     // under 25% : red
+
     // under 75% : yellow
     // otherwise : white
     return output;
