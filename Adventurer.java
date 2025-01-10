@@ -71,6 +71,8 @@ public abstract class Adventurer{
     this.HP = hp;
     this.maxHP = hp;
     int isBurned = 0;
+    int dmgBuff = 0;
+    double dmgAmp = 1.0;
   }
 
   //toString method
