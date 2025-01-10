@@ -6,9 +6,21 @@ public class Game{
   private static final int BORDER_BACKGROUND = Text.WHITE + Text.BACKGROUND;
 
   public static void main(String[] args) {
-
+    Text.clear();
+    drawText("yo mama fat", 4, 5);
+    wait(2000);
+    Text.clear();
+    Text.reset();
 
     //run();
+  }
+
+  public static void wait(int millis){
+    try {
+      Thread.sleep(millis);
+    }
+      catch (InterruptedException e) {
+    }
   }
 
   //Display the borders of your screen that will not change. 80x31
@@ -16,26 +28,26 @@ public class Game{
   public static void drawBackground(){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    for (int count = 1; count < 31; count++){
-      if (count == 1 || count == 30){
-        for (int innerCount = 1; innerCount < 81; innerCount++){
-          go(count, innerCount);
-          color(WHITE, background(WHITE));
-          System.out.print(".");
-          System.out.print(RESET);
-        }
-      }
-      else{
-        go(count, 1);
-        color(WHITE, background(WHITE));
-        System.out.print(".");
-        System.out.print(WHITE);
-        go(count, 80);
-        color(WHITE, background(WHITE));
-        System.out.print(".");
-        System.out.print(RESET);
-      }
-    }
+    // for (int count = 1; count < 31; count++){
+    //   if (count == 1 || count == 30){
+    //     for (int innerCount = 1; innerCount < 81; innerCount++){
+    //       Text.go(count, innerCount);
+    //       Text.color(Text.WHITE, Text.background(Text.WHITE));
+    //       System.out.print(".");
+    //       System.out.print(Text.RESET);
+    //     }
+    //   }
+    //   else{
+    //     Text.go(count, 1);
+    //     Text.color(Text.WHITE, Text.background(Text.WHITE));
+    //     System.out.print(".");
+    //     System.out.print(Text.WHITE);
+    //     Text.go(count, 80);
+    //     Text.color(WHITE, Text.background(WHITE));
+    //     System.out.print(".");
+    //     System.out.print(Text.RESET);
+    //   }
+    // }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
