@@ -34,5 +34,20 @@ public class Driver{
     System.out.println(playerThree.dmgBuffValue());
     System.out.println(playerTwo.support(playerThree));
     System.out.println(playerThree.dmgBuffValue());
+    if (playerThree.getHP() != 25){
+      System.out.println("default hp failed");
+    }
+    if (playerThree.getmaxHP() != 25){
+      System.out.println("max hp method failed");
+    }
+    System.out.println(playerTwo.attack(playerThree));
+    if (playerThree.getmaxHP() != 25){
+      System.out.println("max hp method failed");
+    }
+    System.out.println(playerThree.getHP());
+    System.out.println(playerThree.burnedValue());
+    System.out.println(playerTwo.specialAttack(playerThree));
+    playerTwo.setSpecial(10);
+    System.out.println(playerTwo.specialAttack(playerThree));
   }
 }

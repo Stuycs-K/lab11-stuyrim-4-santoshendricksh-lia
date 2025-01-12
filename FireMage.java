@@ -41,7 +41,7 @@ public class FireMage extends Adventurer{
     other.setBurned(2);
     other.applyDamage(damage);
     restoreSpecial(2);
-    return this + " launched a barrage of fireballs at " + other + " and dealt " + damage + " DMG!" + other + " is now burned.";
+    return this + " launched a barrage of fireballs at " + other + " and dealt " + damage + " DMG! " + other + " is now burned. In addition, " + this + " has gained 2 rage.";
   }
 
   public String specialAttack(Adventurer other){
@@ -50,7 +50,7 @@ public class FireMage extends Adventurer{
       int damage = 10;
       other.applyDamage(damage);
       // IMPLEMENT 3 DMG TO OTHER ALIVE ENEMIES
-      return this + " calls forth a flame pillar, dealing 10 DMG to " + other + "3 DMG to "; //alive enemies;
+      return this + " calls forth a flame pillar, dealing 10 DMG to " + other + " and 3 DMG to "; //alive enemies;
     }
     else{
       return "Not enough rage to call forth a flame pillar. Instead " + attack(other);
