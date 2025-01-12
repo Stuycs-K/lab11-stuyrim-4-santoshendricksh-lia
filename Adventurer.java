@@ -79,12 +79,24 @@ public abstract class Adventurer{
     this.isBurned = value;
   }
 
+  public int burnedValue(){
+    return this.isBurned;
+  }
+
   public void setDmgBuff(int value){
     this.dmgBuff = value;
   }
 
+  public int dmgBuffValue(){
+    return this.dmgBuff;
+  }
+
   public void setDmgAmp(int value){
     this.dmgAmp = value;
+  }
+
+  public int dmgAmpValue(){
+    return this.dmgAmp;
   }
 
   //toString method

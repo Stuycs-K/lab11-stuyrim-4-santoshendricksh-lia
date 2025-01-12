@@ -60,13 +60,13 @@ public class FireMage extends Adventurer{
   public String support(){
     int previousSpecial = getSpecial();
     setSpecial(getSpecial() + 4);
-    this.setDmgBuff(2);
-    return this + " blazingly empowers himself, accumulating " + (getSpecial() - previousSpecial) + " rage and gaining an ATK buff of 2 DMG the next round.";
+    this.setDmgBuff(this.dmgBuffValue() + 2);
+    return this + " blazingly empowers himself, accumulating " + (getSpecial() - previousSpecial) + " rage and gaining an ATK buff of 2 DMG the next round!";
   }
 
   public String support(Adventurer other){
     int dmgBuffInstance = (int) (Math.random() * 2) + 2;
-    other.setDmgBuff(dmgBuffInstance);
-    return this + " grants " + other + " the blessing of the sun, boosting their damage by " + dmgBuffInstance;
+    other.setDmgBuff(other.dmgBuffValue() + dmgBuffInstance);
+    return this + " grants " + other + " the blessing of the sun, boosting their damage the next round by " + dmgBuffInstance + " DMG!";
   }
 }
