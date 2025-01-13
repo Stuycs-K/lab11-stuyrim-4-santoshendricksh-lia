@@ -30,8 +30,8 @@ public class Game{
   public static void drawBackground(){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    for (int count = 1; count < 31; count++){
-      if (count == 1 || count == 30){
+    for (int count = 1; count <= 31; count++){
+      if (count == 1 || count == 31){
         for (int innerCount = 1; innerCount < 81; innerCount++){
           Text.go(count, innerCount);
           Text.color(Text.WHITE, Text.background(Text.WHITE));
@@ -128,9 +128,9 @@ public class Game{
       //YOUR CODE HERE
       for(int i = 0; i < party.length(); i++) {
         // x coord is i * 78 / party.length
-        drawText(party.get(i).getName(), startRow, i * (78 / party.length()));
-        drawText("HP: " + party.get(i).getHP(), startRow + 1, i * (78 / party.length()));
-        drawText(party.get(i).getSpecialName() + ": " + party.get(i).getSpecial(), startRow + 2, i * (78 / party.length()));
+        drawText(party.get(i).getName(), startRow, i * (78 / party.length()) + 1);
+        drawText("HP: " + party.get(i).getHP(), startRow + 1, i * (78 / party.length()) + 1);
+        drawText(party.get(i).getSpecialName() + ": " + party.get(i).getSpecial(), startRow + 2, i * (78 / party.length()) + 1);
       }
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
     }
@@ -160,13 +160,15 @@ public class Game{
   //Display the party and enemies
   //Do not write over the blank areas where text will appear.
   //Place the cursor at the place where the user will by typing their input at the end of this method.
-  public static void drawScreen(){
+  public static void drawScreen(ArrayList<Adventurer>enemies, ArrayList<Adventurer> party){
 
     drawBackground();
 
     //draw player party
+    drawParty(enemies, 2)
 
     //draw enemy party
+    drawParty(party, )
 
   }
 
