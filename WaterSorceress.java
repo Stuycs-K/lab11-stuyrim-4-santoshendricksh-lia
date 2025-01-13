@@ -56,4 +56,15 @@ public class WaterSorceress extends Adventurer{
     }
   }
 
+  public String support(){
+    int previousSpecial = this.getSpecial();
+    int prevHP = this.getHP();
+    int prevMaxHP = this.getmaxHP();
+    int healing = (int) (Math.random() * 2) + 1;
+    this.setSpecial(previousSpecial + 4);
+    this.setHP(prevHP + healing);
+    this.setmaxHP(prevMaxHP + 2);
+    return this + " gains the blessing of the lake, healing herself for " + healing + " HP and increasing her max health by 2HP.";
+  }
+
 }
