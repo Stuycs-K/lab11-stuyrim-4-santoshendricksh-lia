@@ -8,7 +8,8 @@ public class Game{
   public static void main(String[] args) {
     Text.clear();
     //drawText("yo mama fat", 4, 5);
-    TextBox(4,4,5,16, "jesus christ i was walking through the store and got jumped");
+    //TextBox(4,4,5,16, "jesus christ i was walking through the store and got jumped");
+    drawBackground();
     wait(2000);
     Text.clear();
     Text.reset();
@@ -29,36 +30,36 @@ public class Game{
   public static void drawBackground(){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    // for (int count = 1; count < 31; count++){
-    //   if (count == 1 || count == 30){
-    //     for (int innerCount = 1; innerCount < 81; innerCount++){
-    //       Text.go(count, innerCount);
-    //       Text.color(Text.WHITE, Text.background(Text.WHITE));
-    //       System.out.print(".");
-    //       System.out.print(Text.RESET);
-    //     }
-    //   }
-    //   else{
-    //     Text.go(count, 1);
-    //     Text.color(Text.WHITE, Text.background(Text.WHITE));
-    //     System.out.print(".");
-    //     System.out.print(Text.WHITE);
-    //     Text.go(count, 80);
-    //     Text.color(WHITE, Text.background(WHITE));
-    //     System.out.print(".");
-    //     System.out.print(Text.RESET);
-    //   }
-    // }
-    for (int i = 1; i <= 31; i++) {
-      if (i == 1 || i == 31) {
+    for (int count = 1; count < 31; count++){
+      if (count == 1 || count == 30){
         for (int innerCount = 1; innerCount < 81; innerCount++){
-            Text.go(count, innerCount);
-            Text.color(Text.WHITE, Text.background(Text.WHITE));
-            System.out.print(".");
-            Text.reset();
-          }
+          Text.go(count, innerCount);
+          Text.color(Text.WHITE, Text.background(Text.WHITE));
+          System.out.print(".");
+          Text.reset();
+        }
+      }
+      else{
+        Text.go(count, 1);
+        Text.color(Text.WHITE, Text.background(Text.WHITE));
+        System.out.print(".");
+        System.out.print(Text.WHITE);
+        Text.go(count, 80);
+        Text.color(Text.WHITE, Text.background(Text.WHITE));
+        System.out.print(".");
+        Text.reset();
       }
     }
+    // for (int i = 1; i <= 31; i++) {
+    //   if (i == 1 || i == 31) {
+    //     for (int innerCount = 1; innerCount < 81; innerCount++){
+    //         Text.go(i, innerCount);
+    //         Text.color(Text.WHITE, Text.background(Text.WHITE));
+    //         System.out.print(".");
+    //         Text.reset();
+    //       }
+    //   }
+    // }
 
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
