@@ -12,7 +12,7 @@ public class FireMage extends Adventurer{
   }
 
   public FireMage(){
-    this("Roku");
+    this("Delphox");
   }
 
   public String getSpecialName(){
@@ -41,12 +41,12 @@ public class FireMage extends Adventurer{
     other.setBurned(2);
     other.applyDamage(damage);
     restoreSpecial(2);
-    return this + " launched a barrage of fireballs at " + other + " and dealt " + damage + " DMG! " + other + " is now burned. In addition, " + this + " has gained 2 rage.";
+    return this + " launches a barrage of fireballs at " + other + " and deals " + damage + " DMG! " + other + " is now burned. In addition, " + this + " gains 2 rage.";
   }
 
   public String specialAttack(Adventurer other){
     if (getSpecial() >= 9){
-      setSpecial(getSpecial() - 9);
+      this.setSpecial(this.getSpecial() - 9);
       int damage = 10;
       other.applyDamage(damage);
       // IMPLEMENT 3 DMG TO OTHER ALIVE ENEMIES
