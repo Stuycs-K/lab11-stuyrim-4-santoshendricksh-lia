@@ -49,6 +49,17 @@ public class Game{
     //     System.out.print(Text.RESET);
     //   }
     // }
+    for (int i = 1; i <= 31; i++) {
+      if (i == 1 || i == 31) {
+        for (int innerCount = 1; innerCount < 81; innerCount++){
+            Text.go(count, innerCount);
+            Text.color(Text.WHITE, Text.background(Text.WHITE));
+            System.out.print(".");
+            Text.reset();
+          }
+      }
+    }
+
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
