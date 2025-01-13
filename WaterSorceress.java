@@ -64,7 +64,22 @@ public class WaterSorceress extends Adventurer{
     this.setSpecial(previousSpecial + 4);
     this.setHP(prevHP + healing);
     this.setmaxHP(prevMaxHP + 2);
-    return this + " gains the blessing of the lake, healing herself for " + healing + " HP and increasing her max health by 2HP.";
+    return this + " gains the blessing of the lake, healing herself for " + (this.getHP() - prevHP) + " HP and increasing her max health by 2HP.";
+  }
+
+  public String support(Adventurer other){
+    if (this.getHP() > 4){
+      this.setHP(this.getHP() - 4);
+      int prevHP = other.getHP();
+      other.setHP(prevHP + 2);
+      int prevSpecial = other.getSpecial();
+      other.setSpecial(prevSpecial + 2);
+      return this + " performs the Ocean's Sacrifice, losing 4 HP in exchange for " + other " gaining " +
+      (other.getHP() - prevHP) + " HP and " + (other.getSpecial() - prevSpecial) + " " + other.getSpecialName() +"!";
+    }
+    else{
+      return this + " does not have enough HP to perform the Ocean's Sacrifice. Instead " + this.support();
+    }
   }
 
 }
