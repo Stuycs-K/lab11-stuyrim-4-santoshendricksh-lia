@@ -1,8 +1,8 @@
 import java.util.Random;
 public abstract class Adventurer{
   private String name;
-  private int HP,maxHP;
-  private boolean isBurned;
+  private int HP,maxHP,isBurned, dmgBuff, dmgAmp, dmgDebuff;
+
 
   //Abstract methods are meant to be implemented in child classes.
   /*
@@ -73,6 +73,39 @@ public abstract class Adventurer{
     int isBurned = 0;
     int dmgBuff = 0;
     double dmgAmp = 1.0;
+    int dmgDebuff = 0;
+  }
+
+  public void setBurned(int value){
+    this.isBurned = value;
+  }
+
+  public int burnedValue(){
+    return this.isBurned;
+  }
+
+  public void setDmgBuff(int value){
+    this.dmgBuff = value;
+  }
+
+  public int dmgBuffValue(){
+    return this.dmgBuff;
+  }
+
+  public void setDmgAmp(int value){
+    this.dmgAmp = value;
+  }
+
+  public int dmgAmpValue(){
+    return this.dmgAmp;
+  }
+
+  public void setDmgDebuff(int value){
+    this.dmgDebuff = value;
+  }
+
+  public int dmgDebuff(){
+    return this.dmgDebuff;
   }
 
   //toString method
