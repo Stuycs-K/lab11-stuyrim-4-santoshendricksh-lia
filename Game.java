@@ -129,7 +129,7 @@ public class Game{
       for(int i = 0; i < party.length(); i++) {
         // x coord is i * 78 / party.length
         drawText(party.get(i).getName(), startRow, i * (78 / party.length()) + 1);
-        drawText("HP: " + party.get(i).getHP(), startRow + 1, i * (78 / party.length()) + 1);
+        drawText("HP: " + colorByPercentage(party.get(i).getHP()), startRow + 1, i * (78 / party.length()) + 1);
         drawText(party.get(i).getSpecialName() + ": " + party.get(i).getSpecial(), startRow + 2, i * (78 / party.length()) + 1);
       }
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -168,7 +168,7 @@ public class Game{
     drawParty(enemies, 2)
 
     //draw enemy party
-    drawParty(party, )
+    drawParty(party, 27);
 
   }
 
