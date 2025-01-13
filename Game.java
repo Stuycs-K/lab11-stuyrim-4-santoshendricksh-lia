@@ -168,18 +168,21 @@ public class Game{
     drawParty(enemies, 2)
 
     //draw enemy party
-    drawParty(party, 27);
+    drawParty(party, 25);
+
+    Text.go(2, 30);
 
   }
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
-
+      Text.go(2,30);
       //show cursor
-
+      Text.showCursor()
       String input = in.nextLine();
 
       //clear the text that was written
+
 
       return input;
   }
