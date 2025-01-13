@@ -58,8 +58,8 @@ public class FireMage extends Adventurer{
   }
 
   public String support(){
-    int previousSpecial = getSpecial();
-    setSpecial(getSpecial() + 4);
+    int previousSpecial = this.getSpecial();
+    this.setSpecial(getSpecial() + 4);
     this.setDmgBuff(this.dmgBuffValue() + 2);
     return this + " blazingly empowers himself, accumulating " + (getSpecial() - previousSpecial) + " rage and gaining an ATK buff of 2 DMG the next round!";
   }
