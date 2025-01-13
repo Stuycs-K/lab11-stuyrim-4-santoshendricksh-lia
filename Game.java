@@ -114,6 +114,12 @@ public class Game{
 
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
       //YOUR CODE HERE
+      for(int i = 0; i < party.length(); i++) {
+        // x coord is i * 78 / party.length
+        drawText(party.get(i).getName(), startRow, i * (78 / party.length()));
+        drawText("HP: " + party.get(i).getHP(), startRow + 1, i * (78 / party.length()));
+        drawText(party.get(i).getSpecialName() + ": " + party.get(i).getSpecial(), startRow + 2, i * (78 / party.length()));
+      }
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
     }
 
