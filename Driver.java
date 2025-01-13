@@ -3,7 +3,7 @@ public class Driver{
     FireMage playerOne = new FireMage();
     FireMage playerTwo = new FireMage("Fire Spirit");
     FireMage playerThree = new FireMage("Flame Golem", 25);
-    if (!playerOne.getName().equals("Roku")){
+    if (!playerOne.getName().equals("Delphox")){
       System.out.println("getName failed: default");
     }
     if (!playerTwo.getName().equals("Fire Spirit")){

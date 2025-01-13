@@ -28,11 +28,11 @@ public class WaterSorceress extends Adventurer{
   }
 
   public void setSpecial(int n){
-    if (n < rageMax){
+    if (n < dewdropsMax){
       dewdrops = n;
     }
     else{
-      dewdrops = rageMax;
+      dewdrops = dewdropsMax;
     }
   }
 
@@ -41,7 +41,7 @@ public class WaterSorceress extends Adventurer{
     other.applyDamage(damage);
     this.restoreSpecial(3);
     other.setDmgDebuff(2); //change documentation in github to reflect this nerf
-    return this + " calls forth an acid waterfall upon " + other + ", dealing 2 DMG! " + other + " deals 2 less DMG the next round. Furthermore, " + this " gains 3 dewdrops.";
+    return this + " calls forth an acid waterfall upon " + other + ", dealing 2 DMG! " + other + " deals 2 less DMG the next round. Furthermore, " + this + " gains 3 dewdrops.";
   }
 
   public String specialAttack(Adventurer other){
@@ -52,7 +52,7 @@ public class WaterSorceress extends Adventurer{
       return this + " summons a drowning vortex, dealing 3 DMG to all enemies and making them take 1.4x DMG the next turn!";
     }
     else{
-      return "Not enough dewdrops to summon a drowning vortex. Instead, " + this.attack(Adventurer other);
+      return "Not enough dewdrops to summon a drowning vortex. Instead, " + this.attack(other);
     }
   }
 
@@ -74,8 +74,7 @@ public class WaterSorceress extends Adventurer{
       other.setHP(prevHP + 2);
       int prevSpecial = other.getSpecial();
       other.setSpecial(prevSpecial + 2);
-      return this + " performs the Ocean's Sacrifice, losing 4 HP in exchange for " + other " gaining " +
-      (other.getHP() - prevHP) + " HP and " + (other.getSpecial() - prevSpecial) + " " + other.getSpecialName() +"!";
+      return this + " performs the Ocean's Sacrifice, losing 4 HP in exchange for " + other + " gaining " + (other.getHP() - prevHP) + " HP and " + (other.getSpecial() - prevSpecial) + " " + other.getSpecialName() +"!";
     }
     else{
       return this + " does not have enough HP to perform the Ocean's Sacrifice. Instead " + this.support();
