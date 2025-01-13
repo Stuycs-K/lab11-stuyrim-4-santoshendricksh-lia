@@ -10,6 +10,12 @@ public class Game{
     //drawText("yo mama fat", 4, 5);
     //TextBox(4,4,5,16, "jesus christ i was walking through the store and got jumped");
     drawBackground();
+    ArrayList<Adventurer> party = new ArrayList<>();
+    /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+    //YOUR CODE HERE
+    FireMage p1 = new FireMage("henry");
+    WaterSorceress p2 = new WaterSorceress("Santos");
+    drawParty(party, 25);
     wait(2000);
     Text.clear();
     Text.reset();
@@ -126,11 +132,11 @@ public class Game{
 
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
       //YOUR CODE HERE
-      for(int i = 0; i < party.length(); i++) {
+      for(int i = 0; i < party.size(); i++) {
         // x coord is i * 78 / party.length
-        drawText(party.get(i).getName(), startRow, i * (78 / party.length()) + 1);
-        drawText("HP: " + colorByPercentage(party.get(i).getHP()), startRow + 1, i * (78 / party.length()) + 1);
-        drawText(party.get(i).getSpecialName() + ": " + party.get(i).getSpecial(), startRow + 2, i * (78 / party.length()) + 1);
+        drawText(party.get(i).getName(), startRow, i * (78 / party.size()) + 1);
+        drawText("HP: " + colorByPercent(party.get(i).getHP()), party.get(i).getMaxHP(), startRow + 1, i * (78 / party.size()) + 1);
+        drawText(party.get(i).getSpecialName() + ": " + party.get(i).getSpecial(), startRow + 2, i * (78 / party.size()) + 1);
       }
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
     }
@@ -143,7 +149,7 @@ public class Game{
     // under 25% : red
     if ((double) hp / maxHP < 0.25) {
       output = Text.colorize(output, Text.RED);
-    } else if ((double) hp / maxHP < 0.75)) {
+    } else if ((double) hp / maxHP < 0.75) {
       output = Text.colorize(output, Text.YELLOW);
     } else {
       output = Text.colorize(output, Text.WHITE);
@@ -165,7 +171,7 @@ public class Game{
     drawBackground();
 
     //draw player party
-    drawParty(enemies, 2)
+    drawParty(enemies, 2);
 
     //draw enemy party
     drawParty(party, 25);
@@ -178,7 +184,7 @@ public class Game{
       //Move cursor to prompt location
       Text.go(2,30);
       //show cursor
-      Text.showCursor()
+      Text.showCursor();
       String input = in.nextLine();
 
       //clear the text that was written
@@ -206,6 +212,7 @@ public class Game{
     ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
+
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
@@ -213,6 +220,8 @@ public class Game{
     ArrayList<Adventurer> party = new ArrayList<>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
+    FireMage p1 = new FireMage("henry");
+    WaterSorceress p2 = new WaterSorceress("Santos");
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     boolean partyTurn = true;
