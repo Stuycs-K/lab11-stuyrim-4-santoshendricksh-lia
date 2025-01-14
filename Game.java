@@ -300,6 +300,17 @@ public class Game{
         //Enemy action choices go here!
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
         //YOUR CODE HERE
+        int target = (int) (Math.random() * (party.size()));
+        int move = (int) (Math.random() * 3);
+
+        if (move == 0) { // attack
+          enemies.get(whichOpponent).attack(party.get(target));
+        } else if (move == 1) { // special
+          enemies.get(whichOpponent).specialAttack(party.get(target));
+        } else if (move == 2) {
+          int supportTarget = (int) (Math.random() * enemies.size());
+          enemies.get(whichOpponent).support(enemies.get(supportTarget));
+        }
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
 
