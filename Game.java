@@ -58,16 +58,6 @@ public class Game{
         Text.reset();
       }
     }
-    // for (int i = 1; i <= 31; i++) {
-    //   if (i == 1 || i == 31) {
-    //     for (int innerCount = 1; innerCount < 81; innerCount++){
-    //         Text.go(i, innerCount);
-    //         Text.color(Text.WHITE, Text.background(Text.WHITE));
-    //         System.out.print(".");
-    //         Text.reset();
-    //       }
-    //   }
-    // }
 
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
@@ -224,6 +214,8 @@ public class Game{
     //YOUR CODE HERE
     FireMage p1 = new FireMage("henry");
     WaterSorceress p2 = new WaterSorceress("Santos");
+    party.add(p1);
+    party.add(p2);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     boolean partyTurn = true;
@@ -256,11 +248,13 @@ public class Game{
         if(input.equals("attack") || input.equals("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
+          party.get(whichPlayer).attack(enemies.get(whichOpponent));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.equals("special") || input.equals("sp")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
+          party.get(whichPlayer).specialAttack(enemies.get(whichOpponent));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
@@ -268,6 +262,8 @@ public class Game{
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
+          String[] inputArray = input.split(" ");
+          party.get(whichPlayer).support(party.get(Integer.parseInt(inputArray[1])));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
 
