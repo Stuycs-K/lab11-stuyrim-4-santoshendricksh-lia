@@ -309,7 +309,11 @@ public class Game{
           enemies.get(whichOpponent).specialAttack(party.get(target));
         } else if (move == 2) {
           int supportTarget = (int) (Math.random() * enemies.size());
-          enemies.get(whichOpponent).support(enemies.get(supportTarget));
+          if (supportTarget == whichOpponent) {
+            enemies.get(whichOpponent).support();
+          } else {
+            enemies.get(whichOpponent).support(enemies.get(supportTarget));
+          }
         }
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
