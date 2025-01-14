@@ -26,3 +26,14 @@ Make a clear list of features that work/dont work
 | Support (Self)               | **Blazing Empowerment**: The Pyro Mage accumulates **4 RAGE** and deals an extra **2 DMG** if he attacks the next round.      |  **Lake's Protection**: The Hydro Sorceress gains the blessing of the lake, healing herself for **1-2 HP** and increasing her **MAX HP** by **2 HP**.     |
 | Support (Other)               | **Sunlight's Blessing**: The Pyro Mage grants one ALLY the blessing of the sun, boosting their damage by **2-3 DMG** if they attack the next round.      | **Ocean's Sacrifice**: The Hydro Sorceress loses **4 HP** to gift one ALLY with **2 HP** and **2 SPECIAL**.      |
 
+## Extra Adventurer and Boss Subclasses
+
+|  | Forest's Archer Adventurer (24 HP) | Electro Spirit Boss (80 HP) |
+| :---: | :------: | :---------------:         |
+| Brief Overview         | The Pyro Mage is a glass cannon that focuses on dishing out damage. He can apply a burn status effect or deal heavy damage in one shot.     | The Electro Spirit is a boss that has an unpredictable fighting style. It focuses on whittling down the enemies' HP before calling a move that can instakill an enemy.                                              |
+| Attack          | **Fireball Barrage**: The Pyro Mage launches a barrage of fireballs dealing **3-7 DMG** to one ENEMY. This move applies a burn effect that lasts *two turns*, dealing **1 DMG** each turn. The Pyro Mage acculumates **2 RAGE**.      | **Thunder Pulse**: The Electro spirit sends forth a thunder pulse dealing **3 DMG** to one ENEMY and **2 DMG** to all other alive ENEMIES. This move has a **50%** chance to apply the burn status effect and a **25%** chance to apply the paralyzed effect to the selected ENEMY. The Electro Spirit gains **1 TAINTED PHOTON**.       |
+| Special Attack              | **Flame Pillar**: After the Pyro Mage has accumulated **9 RAGE**, he can call forth a flame pillar dealing **10 DMG** to one ENEMY. This flame pillar deals **3 DMG** to all other alive ENEMIES.    | **Lightning's Roar**: After the Electro Spirit has accumulated **3 TAINTED PHOTONS**, it will select an alive ENEMY at random and have a **30%** chance to instantly kill that enemy     |
+| Support (Self)               | **Flash Forward**: The Lightning Spirit gains **1 TAINTED PHOTON** and either gains a random **DMG Buff** of **2-5 DMG** or a random **DMG Amp** of **1.5x-2.5x DMG**.     | **Flash Forward**: The Lightning Spirit gains **1 TAINTED PHOTON** and either gains a random **DMG Buff** of **2-5 DMG** or a random **DMG Amp** of **1.5x-2.5x DMG**.
+| Support (Other)               | **Sunlight's Blessing**: The Pyro Mage grants one ALLY the blessing of the sun, boosting their damage by **2-3 DMG** if they attack the next round.      | **N/A**     |
+
+
