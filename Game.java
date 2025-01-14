@@ -135,7 +135,7 @@ public class Game{
       for(int i = 0; i < party.size(); i++) {
         // x coord is i * 78 / party.length
         drawText(party.get(i).getName(), startRow, i * (78 / party.size()) + 1);
-        drawText("HP: " + colorByPercent(party.get(i).getHP()), party.get(i).getMaxHP(), startRow + 1, i * (78 / party.size()) + 1);
+        drawText("HP: " + colorByPercent(party.get(i).getHP(), party.get(i).getmaxHP()), startRow + 1, i * (78 / party.size()) + 1);
         drawText(party.get(i).getSpecialName() + ": " + party.get(i).getSpecial(), startRow + 2, i * (78 / party.size()) + 1);
       }
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -233,7 +233,7 @@ public class Game{
     //Draw the window border
 
     //You can add parameters to draw screen!
-    drawScreen();//initial state.
+    drawScreen(enemies, party);//initial state.
 
     //Main loop
 
@@ -319,7 +319,7 @@ public class Game{
       }
 
       //display the updated screen after input has been processed.
-      drawScreen();
+      drawScreen(enemies, party);
 
 
     }//end of main game loop
