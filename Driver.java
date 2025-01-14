@@ -56,7 +56,7 @@ public class Driver{
 
     WaterSorceress waterOne = new WaterSorceress();
     WaterSorceress waterTwo = new WaterSorceress("Water Spirit");
-    WaterSorceress waterThree = new WaterSorceress("Water Golem", 25);
+    WaterSorceress waterThree = new WaterSorceress("Water Golem", 30);
     if (!waterOne.getName().equals("Primarina")){
       System.out.println("getName failed: default");
     }
@@ -72,5 +72,21 @@ public class Driver{
     if (waterThree.getSpecialMax() != 12){
       System.out.println("getSpecialMax failed");
     }
+    if (waterThree.dmgDebuffValue() != 0){
+      System.out.println("default dmg debuff value failed");
+    }
+    if (waterThree.getSpecial() != 0){
+      System.out.println("default dewdrops value failed");
+    }
+    System.out.println(waterThree.support());
+    if (waterThree.getmaxHP() != 32){
+      System.out.println("max hp boost failed");
+    }
+    waterThree.support();
+    if (waterThree.getHP() <= 30){
+      System.out.println("HP buff failed");
+    }
+    System.out.println(waterThree.getHP());
+    System.out.println(waterThree.getmaxHP());
   }
 }
