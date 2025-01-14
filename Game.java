@@ -15,8 +15,10 @@ public class Game{
     //YOUR CODE HERE
     FireMage p1 = new FireMage("henry");
     WaterSorceress p2 = new WaterSorceress("Santos");
+    party.add(p1);
+    party.add(p2);
     drawParty(party, 25);
-    wait(2000);
+    wait(3000);
     Text.clear();
     Text.reset();
 
@@ -49,7 +51,7 @@ public class Game{
         Text.go(count, 1);
         Text.color(Text.WHITE, Text.background(Text.WHITE));
         System.out.print(".");
-        System.out.print(Text.WHITE);
+        //System.out.print(Text.WHITE);
         Text.go(count, 80);
         Text.color(Text.WHITE, Text.background(Text.WHITE));
         System.out.print(".");
@@ -134,9 +136,9 @@ public class Game{
       //YOUR CODE HERE
       for(int i = 0; i < party.size(); i++) {
         // x coord is i * 78 / party.length
-        drawText(party.get(i).getName(), startRow, i * (78 / party.size()) + 1);
-        drawText("HP: " + colorByPercent(party.get(i).getHP(), party.get(i).getmaxHP()), startRow + 1, i * (78 / party.size()) + 1);
-        drawText(party.get(i).getSpecialName() + ": " + party.get(i).getSpecial(), startRow + 2, i * (78 / party.size()) + 1);
+        drawText(party.get(i).getName(), startRow, i * (78 / party.size()) + 3);
+        drawText("HP: " + colorByPercent(party.get(i).getHP(), party.get(i).getmaxHP()), startRow + 1, i * (78 / party.size()) + 3);
+        drawText(party.get(i).getSpecialName() + ": " + party.get(i).getSpecial(), startRow + 2, i * (78 / party.size()) + 3);
       }
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
     }
