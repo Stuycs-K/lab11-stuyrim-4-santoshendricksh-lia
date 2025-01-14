@@ -49,5 +49,28 @@ public class Driver{
     System.out.println(playerTwo.specialAttack(playerThree));
     playerTwo.setSpecial(10);
     System.out.println(playerTwo.specialAttack(playerThree));
+
+
+
+
+
+    WaterSorceress waterOne = new WaterSorceress();
+    WaterSorceress waterTwo = new WaterSorceress("Water Spirit");
+    WaterSorceress waterThree = new WaterSorceress("Water Golem", 25);
+    if (!waterOne.getName().equals("Primarina")){
+      System.out.println("getName failed: default");
+    }
+    if (!waterTwo.getName().equals("Water Spirit")){
+      System.out.println("getName failed: Name constructor");
+    }
+    if (!waterThree.getName().equals("Water Golem")){
+      System.out.println("getName failed: Name and hp constructor");
+    }
+    if (!waterTwo.getSpecialName().equals("dewdrops")){
+      System.out.println("getSpecialName failed");
+    }
+    if (waterThree.getSpecialMax() != 12){
+      System.out.println("getSpecialMax failed");
+    }
   }
 }
