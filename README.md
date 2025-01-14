@@ -15,6 +15,46 @@ Make a clear list of features that work/dont work
 
 :beetle: This is a bug that affects the game.
 
+Pyro Mage Attack
+
+Hydro Sorceress Attack
+
+Gaia's Archer Attack
+
+Boss Attacks
+
+Pyro Mage Special Attack
+
+Hydro Sorceress Special Attack
+
+Gaia's Archer Special Attack
+
+Boss Special Attack
+
+Pyro Mage Self Support
+
+Hydro Sorceress Self Support
+
+Gaia's Archer Self Support
+
+Boss Self Support
+
+Pyro Mage Other Support
+
+Hydro Sorceress Other Support
+
+Gaia's Archer Other Support
+
+Terminal Correctly Displays the Info of Party Members and Enemies
+
+Terminal Correctly Ends Game if User Quits, or if One Side is Defeated
+
+Terminal Correctly Displays the Move Used
+
+
+
+
+
 
 ## Adventurer Subclasses
 
@@ -31,9 +71,9 @@ Make a clear list of features that work/dont work
 |  | Gaia's Archer Adventurer (24 HP) | Electro Spirit Boss (80 HP) |
 | :---: | :------: | :---------------:         |
 | Brief Overview         | Gaia's Archer is an all-rounder unit that can deal moderate damage, heal, or apply status effects to friends and foes alike randomly.     | The Electro Spirit is a boss that has an unpredictable fighting style. It focuses on whittling down the enemies' HP before calling a move that can instakill an enemy.                                              |
-| Attack          | **Lethal Arrow**: Gaia's Archer shoots a random arrow dealing **2-5 DMG** to one ENEMY. This move is guaranteed to apply **ONE** of the status effects: **Paralysis**, **Burning**, **Poison**. Gai's Archer accumulates **3 ENERGY**.      | **Thunder Pulse**: The Electro spirit sends forth a thunder pulse dealing **3 DMG** to one ENEMY and **2 DMG** to all other alive ENEMIES. This move has a **50%** chance to apply the burn status effect and a **25%** chance to apply the paralyzed effect to the selected ENEMY. The Electro Spirit gains **1 TAINTED PHOTON**.       |
+| Attack          | **Lethal Arrow**: Gaia's Archer shoots a random arrow dealing **2-5 DMG** to one ENEMY. This move is guaranteed to apply **ONE** of the status effects: **Paralysis**, **Burning**, **Poison**. Gaia's Archer accumulates **3 ENERGY**.      | **Thunder Pulse**: The Electro spirit sends forth a thunder pulse dealing **3 DMG** to one ENEMY and **2 DMG** to all other alive ENEMIES. This move has a **50%** chance to apply the burn status effect and a **25%** chance to apply the paralyzed effect to the selected ENEMY. The Electro Spirit gains **1 TAINTED PHOTON**.       |
 | Special Attack              | **Arrow Barrage**: After the Pyro Mage has accumulated **10 ENERGY**, he can launch a barrage of arrows dealing **5 DMG** to all ENEMIES and applying **Paralysis**, **Burning**, and **Poison** to a select ENEMY.  | **Lightning's Roar**: After the Electro Spirit has accumulated **3 TAINTED PHOTONS**, it will select an alive ENEMY at random and have a **30%** chance to ***instantly kill*** that enemy.     |
 | Support (Self)               | **Gift of Nature**: Gaia's Archer is bestowed with the Gift of Nature, which grants him **1-2 HP** per turn for *3 turns*.      | **Flash Forward**: The Lightning Spirit gains **1 TAINTED PHOTON** and either gains a random **DMG Buff** of **2-5 DMG** or a random **DMG Amp** of **1.5x-2.5x DMG**.
-| Support (Other)               | **Sunlight's Blessing**: The Pyro Mage grants one ALLY the blessing of the sun, boosting their damage by **2-3 DMG** if they attack the next round.      | **N/A**     |
+| Support (Other)               | **Sunlight's Afterglow**: Gaia's Archer's teammates feel the warmth of the sunlight's afterglow, gaining **1 HP** each and having all status effects, both beneficial and harmful, removed.      | **N/A**     |
 
 
