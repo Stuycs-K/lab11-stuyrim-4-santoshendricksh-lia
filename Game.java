@@ -14,11 +14,12 @@ public class Game{
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     FireMage p1 = new FireMage("henry");
+    p1.applyDamage(17);
     WaterSorceress p2 = new WaterSorceress("Santos");
     party.add(p1);
     party.add(p2);
     drawParty(party, 25);
-    wait(3000);
+    wait(7000);
     Text.clear();
     Text.reset();
 
@@ -204,7 +205,8 @@ public class Game{
     ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-
+    FireMage boss = new Firemage("Big Randy");
+    enemies.add(boss);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
@@ -276,12 +278,15 @@ public class Game{
           //This is a player turn.
           //Decide where to draw the following prompt:
           String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+          //drawText(prompt, 29, 2);
+          textBox(29, 2, 78, 1, prompt);
 
 
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
           String prompt = "press enter to see monster's turn";
+          textBox(29, 2, 78, 1, prompt);
 
           partyTurn = false;
           whichOpponent = 0;
