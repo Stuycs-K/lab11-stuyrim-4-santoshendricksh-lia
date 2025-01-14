@@ -104,7 +104,7 @@ public abstract class Adventurer{
     this.dmgDebuff = value;
   }
 
-  public int dmgDebuff(){
+  public int dmgDebuffValue(){
     return this.dmgDebuff;
   }
 

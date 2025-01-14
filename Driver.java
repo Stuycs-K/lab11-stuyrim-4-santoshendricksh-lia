@@ -88,5 +88,10 @@ public class Driver{
     }
     System.out.println(waterThree.getHP());
     System.out.println(waterThree.getmaxHP());
+    System.out.println(waterThree.attack(playerOne));
+    System.out.println(waterTwo.specialAttack(playerTwo));
+    waterTwo.setSpecial(12);
+    System.out.println(waterTwo.specialAttack(playerTwo));
+    System.out.println(waterTwo.support(waterOne));
   }
 }
