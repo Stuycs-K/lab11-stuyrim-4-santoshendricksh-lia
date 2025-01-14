@@ -41,7 +41,7 @@ public class FireMage extends Adventurer{
     other.setBurned(2);
     other.applyDamage(damage);
     restoreSpecial(2);
-    return this + " launches a barrage of fireballs at " + other + " and deals " + damage + " DMG! " + other + " is now burned. In addition, " + this + " gains 2 rage.";
+    return this + " launches a barrage of fireballs at " + other + " and deals " + damage + " DMG! " + other + " is burned. In addition, " + this + " gains 2 rage.";
   }
 
   public String specialAttack(Adventurer other){

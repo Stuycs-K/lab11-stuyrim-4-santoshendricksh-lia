@@ -1,7 +1,8 @@
 import java.util.Random;
 public abstract class Adventurer{
   private String name;
-  private int HP,maxHP,isBurned, dmgBuff, dmgAmp, dmgDebuff;
+  private int HP,maxHP,isBurned, dmgBuff, dmgDebuff, paralyzed, poisoned;
+  private double dmgAmp;
 
 
   //Abstract methods are meant to be implemented in child classes.
@@ -70,10 +71,28 @@ public abstract class Adventurer{
     this.name = name;
     this.HP = hp;
     this.maxHP = hp;
-    int isBurned = 0;
-    int dmgBuff = 0;
-    double dmgAmp = 1.0;
-    int dmgDebuff = 0;
+    this.isBurned = 0;
+    this.dmgBuff = 0;
+    this.dmgAmp = 1.0;
+    this.dmgDebuff = 0;
+    this.poisoned = 0;
+    this.paralyzed = 0;
+  }
+
+  public void setParalyzed(int value){
+    this.paralyzed = value;
+  }
+
+  public int paralyzedValue(){
+    return this.paralyzed;
+  }
+
+  public void setPoison(int value){
+    this.poisoned = value;
+  }
+
+  public int poisonedValue(){
+    return this.poisoned;
   }
 
   public void setBurned(int value){
@@ -96,7 +115,7 @@ public abstract class Adventurer{
     this.dmgAmp = value;
   }
 
-  public int dmgAmpValue(){
+  public double dmgAmpValue(){
     return this.dmgAmp;
   }
 
