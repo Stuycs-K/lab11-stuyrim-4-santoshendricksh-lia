@@ -57,7 +57,17 @@ public class GaiaArcher extends Adventurer{
   }
 
   public String specialAttack(Adventurer other){
-    return "";
+    if (this.getSpecial() >= 10){
+      int damage = 5;
+      other.applyDamage(damage);
+      other.setParalyzed(1);
+      other.setPoison(2);
+      other.setBurned(2);
+      return this + " launches a barrage of arrows, dealing 5 DMG to all enemies and poisoning, burning, and paralyzing " + other +"!";
+    }
+    else{
+      return "Not enough energy to launch a barrage of arrows. Instead, " + this.attack(other);
+    }
   }
 
   public String support(){
