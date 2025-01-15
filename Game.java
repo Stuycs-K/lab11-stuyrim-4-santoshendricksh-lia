@@ -267,7 +267,7 @@ public class Game{
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           String[] inputArray = input.split(" ");
-          party.get(whichPlayer).support(party.get(Integer.parseInt(inputArray[1])));
+          party.get(whichPlayer).support(party, Integer.parseInt(inputArray[1]));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
 
@@ -306,15 +306,15 @@ public class Game{
         int move = (int) (Math.random() * 3);
 
         if (move == 0) { // attack
-          enemies.get(whichOpponent).attack(party.get(target));
+          enemies.get(whichOpponent).attack(party, target);
         } else if (move == 1) { // special
-          enemies.get(whichOpponent).specialAttack(party.get(target));
+          enemies.get(whichOpponent).specialAttack(party, target);
         } else if (move == 2) {
           int supportTarget = (int) (Math.random() * enemies.size());
           if (supportTarget == whichOpponent) {
             enemies.get(whichOpponent).support();
           } else {
-            enemies.get(whichOpponent).support(enemies.get(supportTarget));
+            enemies.get(whichOpponent).support(enemies, supportTarget);
           }
         }
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
