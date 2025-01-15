@@ -28,6 +28,16 @@ public abstract class Adventurer{
     return n;
   }
 
+  public int realDamage(int baseDamage){
+    int toReturn = baseDamage;
+    toReturn += this.dmgBuffValue();
+    toReturn -= this.dmgDebuffValue();
+    toReturn = (int) (toReturn * (this.dmgAmpValue()));
+    if (this.poisonedValue() > 0){
+      toReturn = (int) (toReturn * 0.8);
+    }
+    return toReturn;
+  }
   /*
   all adventurers must have a way to attack enemies and
   support their allys

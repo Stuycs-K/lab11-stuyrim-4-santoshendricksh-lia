@@ -93,5 +93,20 @@ public class Driver{
     waterTwo.setSpecial(12);
     System.out.println(waterTwo.specialAttack(playerTwo));
     System.out.println(waterTwo.support(waterOne));
+
+
+
+    GaiaArcher archerOne = new GaiaArcher();
+    GaiaArcher archerTwo = new GaiaArcher("Cupid");
+    GaiaArcher archerThree = new GaiaArcher("Robin Hood", 30);
+    if (!waterOne.getName().equals("Decidueye")){
+      System.out.println("getName failed: default");
+    }
+    if (!waterTwo.getName().equals("Cupid")){
+      System.out.println("getName failed: Name constructor");
+    }
+    if (!waterThree.getName().equals("Robin Hood")){
+      System.out.println("getName failed: Name and hp constructor");
+    }
   }
 }
