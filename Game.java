@@ -181,7 +181,7 @@ public class Game{
       String input = in.nextLine();
 
       //clear the text that was written
-
+      TextBox(2,30,78,1," ");
 
       return input;
   }
@@ -247,16 +247,18 @@ public class Game{
       if(partyTurn){
 
         //Process user input for the last Adventurer:
-        if(input.equals("attack") || input.equals("a")){
+        if(input.startsWith("attack ") || input.startsWith("a ")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          party.get(whichPlayer).attack(enemies.get(whichOpponent));
+          String[] inputArray = input.split(" ");
+          party.get(whichPlayer).attack(enemies, Integer.parseInt(inputArray[1]));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
-        else if(input.equals("special") || input.equals("sp")){
+        else if(input.startsWith("special ") || input.startsWith("sp ")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          party.get(whichPlayer).specialAttack(enemies.get(whichOpponent));
+          String[] inputArray = input.split(" ");
+          party.get(whichPlayer).specialAttack(enemies, Integer.parseInt(inputArray[1]));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
