@@ -66,7 +66,7 @@ public class Boss extends Adventurer {
   //public abstract String support(ArrayList<Adventurer> others);
 
   //heal or buff the target adventurer
-  public String support(Adventurer other) {
+  public String support(ArrayList<Adventurer> party, int target) {
     return this.support();
   }
 
