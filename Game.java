@@ -240,6 +240,8 @@ public class Game{
       //Read user input
       input = userInput(in);
 
+      String action = new String();
+
       //example debug statment
       TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
@@ -251,14 +253,14 @@ public class Game{
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           String[] inputArray = input.split(" ");
-          party.get(whichPlayer).attack(enemies, Integer.parseInt(inputArray[1]));
+          action = party.get(whichPlayer).attack(enemies, Integer.parseInt(inputArray[1]));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.startsWith("special ") || input.startsWith("sp ")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           String[] inputArray = input.split(" ");
-          party.get(whichPlayer).specialAttack(enemies, Integer.parseInt(inputArray[1]));
+          action = party.get(whichPlayer).specialAttack(enemies, Integer.parseInt(inputArray[1]));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
@@ -267,9 +269,10 @@ public class Game{
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           String[] inputArray = input.split(" ");
-          party.get(whichPlayer).support(party, Integer.parseInt(inputArray[1]));
+          action = party.get(whichPlayer).support(party, Integer.parseInt(inputArray[1]));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
+        TextBox();
 
         //You should decide when you want to re-ask for user input
         //If no errors:
