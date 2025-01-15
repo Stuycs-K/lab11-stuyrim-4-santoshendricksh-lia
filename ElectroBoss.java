@@ -62,5 +62,11 @@ public class ElectroBoss extends Adventurer {
   }
 
   //hurt or hinder the target adventurer, consume some special resource
-  public abstract String specialAttack(Adventurer other);
+  public String specialAttack(Adventurer other) {
+    photons = 0;
+    int rand = (int) (Math.random() * 10);
+    if (rand < 3) {
+      other.applyDamage(other.getHP());
+    }
+  }
 }
