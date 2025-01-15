@@ -1,7 +1,7 @@
 import java.util.Random;
 public abstract class Adventurer{
   private String name;
-  private int HP,maxHP,isBurned, dmgBuff, dmgDebuff, paralyzed, poisoned;
+  private int HP,maxHP,isBurned, dmgBuff, dmgDebuff, paralyzed, poisoned, healingOverTime;
   private double dmgAmp;
 
 
@@ -77,6 +77,15 @@ public abstract class Adventurer{
     this.dmgDebuff = 0;
     this.poisoned = 0;
     this.paralyzed = 0;
+    this.healingOverTime = 0;
+  }
+
+  public void setHOT(int value){
+    this.healingOverTime = value;
+  }
+
+  public int getHot(){
+    return this.healingOverTime;
   }
 
   public void setParalyzed(int value){
