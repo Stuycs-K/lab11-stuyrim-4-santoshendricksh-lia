@@ -115,5 +115,12 @@ public class Driver{
     System.out.println(archerOne.attack(archerTwo));
     System.out.println(archerOne.getSpecial());
     System.out.println(archerOne.specialAttack(archerThree));
+    System.out.println(archerThree.poisonedValue());
+    System.out.println(archerThree.burnedValue());
+    System.out.println(archerThree.paralyzedValue());
+    System.out.println(archerOne.support(archerThree));
+    System.out.println(archerThree.poisonedValue());
+    System.out.println(archerThree.burnedValue());
+    System.out.println(archerThree.paralyzedValue());
   }
 }
