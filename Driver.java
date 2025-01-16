@@ -99,14 +99,21 @@ public class Driver{
     GaiaArcher archerOne = new GaiaArcher();
     GaiaArcher archerTwo = new GaiaArcher("Cupid");
     GaiaArcher archerThree = new GaiaArcher("Robin Hood", 30);
-    if (!waterOne.getName().equals("Decidueye")){
+    if (!archerOne.getName().equals("Decidueye")){
       System.out.println("getName failed: default");
     }
-    if (!waterTwo.getName().equals("Cupid")){
+    if (!archerTwo.getName().equals("Cupid")){
       System.out.println("getName failed: Name constructor");
     }
-    if (!waterThree.getName().equals("Robin Hood")){
+    if (!archerThree.getName().equals("Robin Hood")){
       System.out.println("getName failed: Name and hp constructor");
     }
+    System.out.println(archerOne.attack(archerTwo));
+    System.out.println(archerOne.attack(archerTwo));
+    System.out.println(archerOne.attack(archerTwo));
+    System.out.println(archerOne.attack(archerTwo));
+    System.out.println(archerOne.attack(archerTwo));
+    System.out.println(archerOne.getSpecial());
+    System.out.println(archerOne.specialAttack(archerThree));
   }
 }
