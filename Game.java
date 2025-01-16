@@ -306,13 +306,16 @@ public class Game{
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
         //YOUR CODE HERE
         int target = (int) (Math.random() * (party.size()));
-        int move = (int) (Math.random() * 3);
+        int move = (int) (Math.random() * 2);
 
         if (move == 0) { // attack
-          action = enemies.get(whichOpponent).attack(party, target);
-        } else if (move == 1) { // special
-          action = enemies.get(whichOpponent).specialAttack(party, target);
-        } else if (move == 2) {
+
+          if (enemies.get(whichOpponent).getSpecial() >= enemies.get(whichOpponent).getSpecialReq()) {
+            action = enemies.get(whichOpponent).specialAttack(party, target);
+          } else {
+            action = enemies.get(whichOpponent).attack(party, target);
+          }
+        }  else if (move == 1) {
           int supportTarget = (int) (Math.random() * enemies.size());
           if (supportTarget == whichOpponent) {
             action = enemies.get(whichOpponent).support();
