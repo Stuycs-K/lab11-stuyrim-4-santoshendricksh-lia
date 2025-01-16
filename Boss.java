@@ -75,10 +75,10 @@ public class Boss extends Adventurer {
     photons++;
     int rand = (int)(Math.random() * 2);
     if (rand == 0) {
-      dmgBuff += (int) (Math.random() * 4) + 2;
+      setDmgBuff((int) (Math.random() * 4) + 2);
     } else {
       Random rng = new Random();
-      dmgAmp = Random.nextDouble() + 1.5;
+      setDmgAmp(rng.nextDouble() + 1.5);
     }
     return this.getName() + " used Flash Forward, gaining a Tainted Photon and buffing himself";
   }
