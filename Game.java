@@ -272,7 +272,7 @@ public class Game{
           action = party.get(whichPlayer).support(party, Integer.parseInt(inputArray[1]));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
-        TextBox();
+        TextBox(8, 3, 76, 12, action);
 
         //You should decide when you want to re-ask for user input
         //If no errors:
@@ -284,14 +284,14 @@ public class Game{
           //Decide where to draw the following prompt:
           String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
           //drawText(prompt, 29, 2);
-          textBox(29, 2, 78, 1, prompt);
+          TextBox(29, 2, 78, 1, prompt);
 
 
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
           String prompt = "press enter to see monster's turn";
-          textBox(29, 2, 78, 1, prompt);
+          TextBox(29, 2, 78, 1, prompt);
 
           partyTurn = false;
           whichOpponent = 0;
@@ -306,18 +306,21 @@ public class Game{
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
         //YOUR CODE HERE
         int target = (int) (Math.random() * (party.size()));
-        int move = (int) (Math.random() * 3);
+        int move = (int) (Math.random() * 2);
 
         if (move == 0) { // attack
-          enemies.get(whichOpponent).attack(party, target);
-        } else if (move == 1) { // special
-          enemies.get(whichOpponent).specialAttack(party, target);
-        } else if (move == 2) {
+
+          if (enemies.get(whichOpponent).getSpecial() >= enemies.get(whichOpponent).getSpecialReq()) {
+            action = enemies.get(whichOpponent).specialAttack(party, target);
+          } else {
+            action = enemies.get(whichOpponent).attack(party, target);
+          }
+        }  else if (move == 1) {
           int supportTarget = (int) (Math.random() * enemies.size());
           if (supportTarget == whichOpponent) {
-            enemies.get(whichOpponent).support();
+            action = enemies.get(whichOpponent).support();
           } else {
-            enemies.get(whichOpponent).support(enemies, supportTarget);
+            action = enemies.get(whichOpponent).support(enemies, supportTarget);
           }
         }
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/

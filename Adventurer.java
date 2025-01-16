@@ -131,7 +131,7 @@ public abstract class Adventurer{
     return this.dmgBuff;
   }
 
-  public void setDmgAmp(int value){
+  public void setDmgAmp(double value){
     this.dmgAmp = value;
   }
 
