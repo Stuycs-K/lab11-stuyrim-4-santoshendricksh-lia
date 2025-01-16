@@ -40,7 +40,7 @@ public class FireMage extends Adventurer{
     int damage = (int)(Math.random() * 5) + 3;
     other.setBurned(2);
     other.applyDamage(damage);
-    restoreSpecial(2);
+    this.restoreSpecial(2);
     return this + " launches a barrage of fireballs at " + other + " and deals " + damage + " DMG! " + other + " is burned. In addition, " + this + " gains 2 rage.";
   }
 
@@ -59,9 +59,9 @@ public class FireMage extends Adventurer{
 
   public String support(){
     int previousSpecial = this.getSpecial();
-    this.setSpecial(getSpecial() + 4);
+    this.restoreSpecial(4);
     this.setDmgBuff(this.dmgBuffValue() + 2);
-    return this + " blazingly empowers himself, accumulating " + (getSpecial() - previousSpecial) + " rage and gaining an ATK buff of 2 DMG the next round!";
+    return this + " blazingly empowers himself, accumulating " + (this.getSpecial() - previousSpecial) + " rage and gaining an ATK buff of 2 DMG the next round!";
   }
 
   public String support(Adventurer other){

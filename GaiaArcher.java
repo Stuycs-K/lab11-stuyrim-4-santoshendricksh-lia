@@ -38,14 +38,15 @@ public class GaiaArcher extends Adventurer{
 
   public String attack(Adventurer other){
     int damage = (int) (Math.random() * 4) + 2;
+    this.restoreSpecial(2);
     other.applyDamage(damage);
-    int randomEffect = (int) (Math.random() * 3);
+    double randomEffect = Math.random();
     String status = "";
-    if (randomEffect == 0){
+    if (randomEffect <= 0.33){
       other.setParalyzed(1);
       status = other + " is paralyzed!";
     }
-    else if (randomEffect == 1){
+    else if (randomEffect <= 0.66){
       other.setPoison(2);
       status = other + " is poisoned!";
     }
@@ -63,7 +64,7 @@ public class GaiaArcher extends Adventurer{
       other.setParalyzed(1);
       other.setPoison(2);
       other.setBurned(2);
-      return this + " launches a barrage of arrows, dealing 5 DMG to all enemies and poisoning, burning, and paralyzing " + other +"!";
+      return this + " launches a barrage of arrows, dealing 5 DMG to all enemies, and poisoning, burning, and paralyzing " + other +"!";
     }
     else{
       return "Not enough energy to launch a barrage of arrows. Instead, " + this.attack(other);
