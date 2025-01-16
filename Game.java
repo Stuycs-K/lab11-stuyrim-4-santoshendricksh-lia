@@ -290,8 +290,17 @@ public class Game{
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
+          for (int i = 0; i < party.size(); i++) {
+            if (party.get(i).poisonedValue() > 0) {
+              party.get(i).applyDamage(1);
+              party.get(i).setPoison(party.get(i).poisonedValue() - 1);
+            }
+
+          }
+
           String prompt = "press enter to see monster's turn";
           TextBox(29, 2, 78, 1, prompt);
+          userInput(in);
 
           partyTurn = false;
           whichOpponent = 0;
