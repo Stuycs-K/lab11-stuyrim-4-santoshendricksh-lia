@@ -295,7 +295,10 @@ public class Game{
               party.get(i).applyDamage(1);
               party.get(i).setPoison(party.get(i).poisonedValue() - 1);
             }
-
+            if (party.get(i).burnedValue() > 0) {
+              party.get(i).applyDamage(2);
+              party.get(i).setBurned(party.get(i).burnedValue() - 1);
+            }
           }
 
           String prompt = "press enter to see monster's turn";
