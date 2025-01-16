@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.ArrayList;
 public abstract class Adventurer{
   private String name;
   private int HP,maxHP,isBurned, dmgBuff, dmgDebuff, paralyzed, poisoned, healingOverTime;
@@ -43,7 +44,7 @@ public abstract class Adventurer{
   support their allys
   */
   //hurt or hinder the target adventurer
-  public abstract String attack(Adventurer other);
+  public abstract String attack(ArrayList<Adventurer> enemies, int target);
 
   /*This is an example of an improvement that you can make to allow
    * for more flexible targetting.
@@ -52,13 +53,13 @@ public abstract class Adventurer{
   //public abstract String support(ArrayList<Adventurer> others);
 
   //heal or buff the target adventurer
-  public abstract String support(Adventurer other);
+  public abstract String support(ArrayList<Adventurer> party, inttarget);
 
   //heal or buff self
   public abstract String support();
 
   //hurt or hinder the target adventurer, consume some special resource
-  public abstract String specialAttack(Adventurer other);
+  public abstract String specialAttack(ArrayList<Adventurer> enemies, int target);
 
   /*
   standard methods
