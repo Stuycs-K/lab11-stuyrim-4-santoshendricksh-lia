@@ -283,6 +283,11 @@ public class Game{
           action = party.get(whichPlayer).support(party, Integer.parseInt(inputArray[1]));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
+
+        // check for deaths
+        killDead(party);
+        killDead(enemies);
+
         TextBox(8, 3, 76, 12, action);
 
         //You should decide when you want to re-ask for user input
@@ -348,6 +353,9 @@ public class Game{
             action = enemies.get(whichOpponent).support(enemies, supportTarget);
           }
         }
+
+        killDead(party);
+        killDead(enemies);
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
 
