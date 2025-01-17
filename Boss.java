@@ -79,11 +79,18 @@ public class Boss extends Adventurer {
   }
 
   //hurt or hinder the target adventurer, consume some special resource
-  public String specialAttack(Adventurer other) {
+  public String specialAttack(ArrayList<Adventurer> enemies, int target) {
+    if (photons < 3) {
+      String earlyRet = attack (enemies, target);
+      return "Did not have enough Tainted Photons to use Lightning's Roar. Instead, " + earlyRet;
+    }
+    
     photons = 0;
     int rand = (int) (Math.random() * 10);
     if (rand < 3) {
-      other.applyDamage(other.getHP());
+      enemies.get(target).applyDamage(enemies.get(target).getHP());
+      return getName() + " used Lightning's Roar to kill " + enemies.get(target) + " instantly.";
     }
+    return getName() + " used Lightning's Roar, but failed to kill " + enemies.get(target).getName(); + ".";
   }
 }
