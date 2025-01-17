@@ -38,25 +38,20 @@ public class Boss extends Adventurer {
     String ret = getName() + "used Thunder Pulse, dealing 3 damage to " + enemies.get(rand).getName() + " and 2 to the rest.";
     for (int i = 0; i < enemies.size(); i++) {
       if (i == rand) {
-        enemies.get(i).applyDamage(3);
+        enemies.get(i).applyDamage(realDamage(3));
         int rand2 = (int) (Math.random() * 100);
         if (rand2 < 50) {
-          enemies.get(i).setBurned(3);
+          enemies.get(i).setBurned(2);
           ret += " " + enemies.get(i).getName() + "was also burned.";
         } else if (rand2 < 75) {
-          enemies.get(i).setParalyzed(3);
+          enemies.get(i).setParalyzed(1);
           ret += " " + enemies.get(i).getName() + "was also paralyzed.";
         }
       } else {
-        enemies.get(i).applyDamage(2);
+        enemies.get(i).applyDamage(realDamage(3));
       }
     }
     return ret;
-  }
-
-  public String attack(Adventurer other) {
-    System.out.println("also remember to ask about continuous amp valuesremember to edit codewarrior to support extar effects likeburning/poison");
-    return "this is a placeholder func, ask mr k if you can change abstract attack parameters";
   }
 
   /*This is an example of an improvement that you can make to allow
