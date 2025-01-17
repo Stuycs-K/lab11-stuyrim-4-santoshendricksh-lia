@@ -370,6 +370,16 @@ public class Game{
       if(!partyTurn && whichOpponent >= enemies.size()){
         //THIS BLOCK IS TO END THE ENEMY TURN
         //It only triggers after the last enemy goes.
+        for (int i = 0; i < enemies.size(); i++) {
+          if (enemies.get(i).poisonedValue() > 0) {
+            enemies.get(i).applyDamage(1);
+            enemies.get(i).setPoison(enemies.get(i).poisonedValue() - 1);
+          }
+          if (enemies.get(i).burnedValue() > 0) {
+            enemies.get(i).applyDamage(2);
+            enemies.get(i).setBurned(enemies.get(i).burnedValue() - 1);
+          }
+        }
         whichPlayer = 0;
         turn++;
         partyTurn=true;
