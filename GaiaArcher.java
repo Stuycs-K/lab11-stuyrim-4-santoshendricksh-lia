@@ -39,7 +39,7 @@ public class GaiaArcher extends Adventurer{
   public String attack(Adventurer other){
     int damage = (int) (Math.random() * 4) + 2;
     this.restoreSpecial(2);
-    other.applyDamage(damage);
+    other.applyDamage(realDamage(damage));
     double randomEffect = Math.random();
     String status = "";
     if (randomEffect <= 0.33){
@@ -60,7 +60,7 @@ public class GaiaArcher extends Adventurer{
   public String specialAttack(Adventurer other){
     if (this.getSpecial() >= 10){
       int damage = 5;
-      other.applyDamage(damage);
+      other.applyDamage(realDamage(damage));
       other.setParalyzed(1);
       other.setPoison(2);
       other.setBurned(2);

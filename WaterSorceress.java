@@ -38,7 +38,7 @@ public class WaterSorceress extends Adventurer{
 
   public String attack(Adventurer other){
     int damage = 2;
-    other.applyDamage(damage);
+    other.applyDamage(realDamage(damage));
     this.restoreSpecial(3);
     other.setDmgDebuff(2); //change documentation in github to reflect this nerf
     return this + " calls forth an acid waterfall upon " + other + ", dealing 2 DMG! " + other + " deals 2 less DMG the next round. Furthermore, " + this + " gains 3 dewdrops.";
@@ -48,7 +48,7 @@ public class WaterSorceress extends Adventurer{
     if (this.getSpecial() >= 8){
       this.setSpecial(this.getSpecial() - 8);
       int damage = 3;
-      other.applyDamage(damage); //add implementation so that it targets all ENEMIES
+      other.applyDamage(realDamage(damage)); //add implementation so that it targets all ENEMIES
       return this + " summons a drowning vortex, dealing 3 DMG to all enemies and making them take 1.4x DMG the next turn!";
     }
     else{

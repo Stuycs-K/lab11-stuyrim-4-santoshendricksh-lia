@@ -39,7 +39,7 @@ public class FireMage extends Adventurer{
   public String attack(Adventurer other){
     int damage = (int)(Math.random() * 5) + 3;
     other.setBurned(2);
-    other.applyDamage(damage);
+    other.applyDamage(realDamage(damage));
     this.restoreSpecial(2);
     return this + " launches a barrage of fireballs at " + other + " and deals " + damage + " DMG! " + other + " is burned. In addition, " + this + " gains 2 rage.";
   }
@@ -48,7 +48,7 @@ public class FireMage extends Adventurer{
     if (getSpecial() >= 9){
       this.setSpecial(this.getSpecial() - 9);
       int damage = 10;
-      other.applyDamage(damage);
+      other.applyDamage(realDamage(damage));
       // IMPLEMENT 3 DMG TO OTHER ALIVE ENEMIES
       return this + " calls forth a flame pillar, dealing 10 DMG to " + other + " and 3 DMG to "; //alive enemies;
     }
