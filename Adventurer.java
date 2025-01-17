@@ -53,7 +53,7 @@ public abstract class Adventurer{
   //public abstract String support(ArrayList<Adventurer> others);
 
   //heal or buff the target adventurer
-  public abstract String support(ArrayList<Adventurer> party, inttarget);
+  public abstract String support(ArrayList<Adventurer> party, int target);
 
   //heal or buff self
   public abstract String support();
