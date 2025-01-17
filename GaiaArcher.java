@@ -36,7 +36,7 @@ public class GaiaArcher extends Adventurer{
     }
   }
 
-  public String attack(Adventurer other){
+  public String attack(ArrayList<Adventurer> enemies, Adventurer other){
     int damage = (int) (Math.random() * 4) + 2;
     this.restoreSpecial(2);
     other.applyDamage(realDamage(damage));
@@ -57,7 +57,7 @@ public class GaiaArcher extends Adventurer{
     return this + " shoots an arrow at " + other + ", dealing " + damage + " damage." + " " + status + " In addition, " + this + " gains 2 Energy.";
   }
 
-  public String specialAttack(Adventurer other){
+  public String specialAttack(ArrayList<Adventurer> enemies, int other){
     if (this.getSpecial() >= 10){
       int damage = 5;
       other.applyDamage(realDamage(damage));
@@ -76,7 +76,7 @@ public class GaiaArcher extends Adventurer{
     return this + " is bestowed with the gift of nature, healing for 1 or 2 HP for the next three turns.";
   }
 
-  public String support(Adventurer other){
+  public String support(ArrayList<Adventurer> party, Adventurer other){
     other.setHP(other.getHP() + 1);
     other.setHOT(0);
     other.setBurned(0);

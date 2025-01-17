@@ -36,7 +36,7 @@ public class WaterSorceress extends Adventurer{
     }
   }
 
-  public String attack(Adventurer other){
+  public String attack(ArrayList<Adventurer> enemies, Adventurer other){
     int damage = 2;
     other.applyDamage(realDamage(damage));
     this.restoreSpecial(3);
@@ -44,7 +44,7 @@ public class WaterSorceress extends Adventurer{
     return this + " calls forth an acid waterfall upon " + other + ", dealing 2 DMG! " + other + " deals 2 less DMG the next round. Furthermore, " + this + " gains 3 dewdrops.";
   }
 
-  public String specialAttack(Adventurer other){
+  public String specialAttack(ArrayList<Adventurer> enemies, Adventurer other){
     if (this.getSpecial() >= 8){
       this.setSpecial(this.getSpecial() - 8);
       int damage = 3;
@@ -65,7 +65,7 @@ public class WaterSorceress extends Adventurer{
     return this + " gains the blessing of the lake, healing herself for " + (this.getHP() - prevHP) + " HP and increasing her max health by 2HP.";
   }
 
-  public String support(Adventurer other){
+  public String support(ArrayList<Adventurer> party, Adventurer other){
     if (this.getHP() > 4){
       this.applyDamage(4);
       int prevHP = other.getHP();
