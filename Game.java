@@ -192,6 +192,17 @@ public class Game{
     Text.go(32,1);
   }
 
+  public static void killDead(ArrayList<Adventurer> party) {
+    for (int i = 0; i < party.size(); i++) {
+      if (party.get(i).getHP() <= 0) {
+        // announce death
+        // DO THISSSSSSSSSSSSSSSSSSS
+        party.remove(i);
+        i--;
+      }
+    }
+  }
+
   public static void run(){
     //Clear and initialize
     Text.hideCursor();
@@ -290,6 +301,8 @@ public class Game{
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
+
+          // checking for status effects
           for (int i = 0; i < party.size(); i++) {
             if (party.get(i).poisonedValue() > 0) {
               party.get(i).applyDamage(1);
