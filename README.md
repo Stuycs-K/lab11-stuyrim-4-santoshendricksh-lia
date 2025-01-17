@@ -15,41 +15,41 @@ Make a clear list of features that work/dont work
 
 :beetle: This is a bug that affects the game.
 
-Pyro Mage Attack
+:white_check_mark: Pyro Mage Attack
 
-Hydro Sorceress Attack
+:white_check_mark: Hydro Sorceress Attack
 
-Gaia's Archer Attack
+:ballot_box_with_check:  Gaia's Archer Attack
 
-Boss Attacks
+:white_check_mark: Boss Attacks
 
-Pyro Mage Special Attack
+:question: Pyro Mage Special Attack
 
-Hydro Sorceress Special Attack
+:question: Hydro Sorceress Special Attack
 
-Gaia's Archer Special Attack
+:question: Gaia's Archer Special Attack
 
-Boss Special Attack
+:white_check_mark: Boss Special Attack
 
-Pyro Mage Self Support
+:white_check_mark: Pyro Mage Self Support
 
-Hydro Sorceress Self Support
+:white_check_mark: Hydro Sorceress Self Support
 
-Gaia's Archer Self Support
+:ballot_box_with_check:  Gaia's Archer Self Support
 
-Boss Self Support
+:white_check_mark: Boss Self Support
 
-Pyro Mage Other Support
+:white_check_mark: Pyro Mage Other Support
 
-Hydro Sorceress Other Support
+:white_check_mark: Hydro Sorceress Other Support
 
-Gaia's Archer Other Support
+:question: Gaia's Archer Other Support
 
-Terminal Correctly Displays the Info of Party Members and Enemies
+:question: Terminal Correctly Displays the Info of Party Members and Enemies
 
-Terminal Correctly Ends Game if User Quits, or if One Side is Defeated
+:question: Terminal Correctly Ends Game if User Quits, or if One Side is Defeated
 
-Terminal Correctly Displays the Move Used
+:question: Terminal Correctly Displays the Move Used
 
 
 
