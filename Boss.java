@@ -32,6 +32,9 @@ public class Boss extends Adventurer {
   public void setSpecial(int n) {
     photons = n;
   }
+  public int getSpecialReq() {
+    return 3;
+  }
 
   public String attack(ArrayList<Adventurer> enemies, int target) {
     int rand = target;

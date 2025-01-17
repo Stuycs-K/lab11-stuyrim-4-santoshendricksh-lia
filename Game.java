@@ -205,7 +205,7 @@ public class Game{
     ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    FireMage boss = new Firemage("Big Randy");
+    FireMage boss = new FireMage("Big Randy");
     enemies.add(boss);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
