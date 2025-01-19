@@ -9,21 +9,21 @@ public class Game{
     Text.clear();
     //drawText("yo mama fat", 4, 5);
     //TextBox(4,4,5,16, "jesus christ i was walking through the store and got jumped");
-    drawBackground();
-    ArrayList<Adventurer> party = new ArrayList<>();
-    /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
-    FireMage p1 = new FireMage("henry");
-    p1.applyDamage(17);
-    WaterSorceress p2 = new WaterSorceress("Santos");
-    party.add(p1);
-    party.add(p2);
-    drawParty(party, 25);
-    wait(7000);
-    Text.clear();
-    Text.reset();
+    // drawBackground();
+    // ArrayList<Adventurer> party = new ArrayList<>();
+    // /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+    // //YOUR CODE HERE
+    // FireMage p1 = new FireMage("henry");
+    // p1.applyDamage(17);
+    // WaterSorceress p2 = new WaterSorceress("Santos");
+    // party.add(p1);
+    // party.add(p2);
+    // drawParty(party, 25);
+    // wait(7000);
+    // Text.clear();
+    // Text.reset();
 
-    //run();
+    run();
   }
 
   public static void wait(int millis){
@@ -87,7 +87,7 @@ public class Game{
   public static void TextBox(int row, int col, int width, int height, String text){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    int index = 0;
+    //int index = 0;
     String padding = new String("");
     for (int i = 0; i < width*height - text.length(); i++) {
       padding += " ";
@@ -98,7 +98,7 @@ public class Game{
 
     for (int i = 0; i < height; i++) {
       //System.out.print(boxText.substring(i * width, (i + 1) * width));
-      drawText(boxText.substring(i * width, (i + 1) * width), col + i, row);
+      drawText(boxText.substring(i * width, (i + 1) * width), row + i, col);
     }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
@@ -175,13 +175,15 @@ public class Game{
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
-      Text.go(2,30);
+      Text.go(30,2);
       //show cursor
       Text.showCursor();
       String input = in.nextLine();
 
       //clear the text that was written
-      TextBox(2,30,78,1," ");
+      TextBox(30,2,78,1," ");
+
+      Text.go(30,2);
 
       return input;
   }
@@ -226,7 +228,7 @@ public class Game{
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     FireMage p1 = new FireMage("henry");
-    WaterSorceress p2 = new WaterSorceress("Santos");
+    CodeWarrior p2 = new CodeWarrior("Santos");
     party.add(p1);
     party.add(p2);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -247,6 +249,8 @@ public class Game{
     //display this prompt at the start of the game.
     String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
 
+    TextBox(29, 2, 74, 1, preprompt);
+
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input
       input = userInput(in);
@@ -254,7 +258,7 @@ public class Game{
       String action = new String();
 
       //example debug statment
-      TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
+      TextBox(2,24,78,1,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
       //display event based on last turn's input
       if(partyTurn){
