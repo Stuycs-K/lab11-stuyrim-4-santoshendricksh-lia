@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class CodeWarrior extends Adventurer{
   int caffeine, caffeineMax;
   String preferredLanguage;
@@ -41,34 +43,34 @@ public class CodeWarrior extends Adventurer{
   }
 
   /*Deal 2-7 damage to opponent, restores 2 caffeine*/
-  public String attack(Adventurer other){
+  public String attack(ArrayList<Adventurer> enemies, int target){
     int damage = (int)(Math.random()*6)+2;
-    other.applyDamage(damage);
+    enemies.get(target).applyDamage(damage);
     restoreSpecial(2);
-    return this + " attacked "+ other + " and dealt "+ damage +
+    return this + " attacked "+ enemies.get(target) + " and dealt "+ damage +
     " DMG! They then take a sip of their coffee.";
   }
 
   /*Deal 3-12 damage to opponent, only if caffeine is high enough.
   *Reduces caffeine by 8.
   */
-  public String specialAttack(Adventurer other){
+  public String specialAttack(ArrayList<Adventurer> enemies, int target){
     if(getSpecial() >= 8){
       setSpecial(getSpecial()-8);
       int damage = (int)(Math.random()*5+Math.random()*5)+3;
-      other.applyDamage(damage);
+      enemies.get(target).applyDamage(damage);
       return this + " used their "+preferredLanguage+
       " skills to hack the matrix. "+
-      " This glitched out "+other+" dealing "+ damage +" points of damage.";
+      " This glitched out "+enemies.get(target)+" dealing "+ damage +" points of damage.";
     }else{
-      return "Not enough caffeine to use the ultimate code. Instead "+attack(other);
+      return "Not enough caffeine to use the ultimate code. Instead "+attack(enemies, target);
     }
 
   }
   /*Restores 5 special to other*/
-  public String support(Adventurer other){
-    return "Gives a coffee to "+other+" and restores "
-    + other.restoreSpecial(5)+" "+other.getSpecialName();
+  public String support(ArrayList<Adventurer> party, int target){
+    return "Gives a coffee to "+party.get(target)+" and restores "
+    + party.get(target).restoreSpecial(5)+" "+party.get(target).getSpecialName();
   }
   /*Restores 6 special and 1 hp to self.*/
   public String support(){
