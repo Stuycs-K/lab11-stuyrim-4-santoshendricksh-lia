@@ -36,7 +36,8 @@ public class FireMage extends Adventurer{
     }
   }
 
-  public String attack(ArrayList<Adventurer> enemies, Adventurer other){
+  public String attack(ArrayList<Adventurer> enemies, int target){
+    Adventurer other = enemies.get(target);
     int damage = (int)(Math.random() * 5) + 3;
     other.setBurned(2);
     other.applyDamage(this.realDamage(damage));
@@ -44,7 +45,8 @@ public class FireMage extends Adventurer{
     return this + " launches a barrage of fireballs at " + other + " and deals " + damage + " DMG! " + other + " is burned. In addition, " + this + " gains 2 rage.";
   }
 
-  public String specialAttack(ArrayList<Adventurer> enemies, Adventurer other){
+  public String specialAttack(ArrayList<Adventurer> enemies, int target){
+    Adventurer other = enemies.get(target);
     if (getSpecial() >= 9){
       this.setSpecial(this.getSpecial() - 9);
       int damage = 10;
@@ -57,7 +59,7 @@ public class FireMage extends Adventurer{
       return this + " calls forth a flame pillar, dealing 10 DMG to " + other + " and 3 DMG to "; //alive enemies;
     }
     else{
-      return "Not enough rage to call forth a flame pillar. Instead " + attack(enemies, other);
+      return "Not enough rage to call forth a flame pillar. Instead " + attack(enemies, target);
     }
   }
   public int getSpecialReq() {
@@ -71,7 +73,8 @@ public class FireMage extends Adventurer{
     return this + " blazingly empowers himself, accumulating " + (this.getSpecial() - previousSpecial) + " rage and gaining an ATK buff of 2 DMG the next round!";
   }
 
-  public String support(ArrayList<Adventurer> party, Adventurer other){
+  public String support(ArrayList<Adventurer> party, int target){
+    Adventurer other = party.get(target);
     int dmgBuffInstance = (int) (Math.random() * 2) + 2;
     other.setDmgBuff(other.dmgBuffValue() + dmgBuffInstance);
     return this + " grants " + other + " the blessing of the sun, boosting their damage the next round by " + dmgBuffInstance + " DMG!";
