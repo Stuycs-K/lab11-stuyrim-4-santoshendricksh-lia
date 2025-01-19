@@ -205,6 +205,16 @@ public class Game{
     }
   }
 
+  public static boolean checkInputValid(String input) {
+    String[] actionList = {"attack ", "a ", "special ", "sp ", "support ", "su"};
+    for (String choice : actionList) {
+      if (input.startsWith(choice)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   public static void run(){
     //Clear and initialize
     Text.hideCursor();
@@ -253,7 +263,14 @@ public class Game{
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input
+      
       input = userInput(in);
+      while (!checkInputValid(input)) {
+        String errMsg = "Thats not a choice! Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+
+        TextBox(29, 2, 74, 1, errMsg);
+        input = userInput(in);
+      }
 
       String action = new String();
 
