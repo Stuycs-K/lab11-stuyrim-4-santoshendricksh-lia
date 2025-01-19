@@ -55,6 +55,9 @@ public class WaterSorceress extends Adventurer{
       return "Not enough dewdrops to summon a drowning vortex. Instead, " + this.attack(other);
     }
   }
+  public int getSpecialReq() {
+    return 8;
+  }
 
   public String support(){
     int prevHP = this.getHP();

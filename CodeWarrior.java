@@ -67,6 +67,10 @@ public class CodeWarrior extends Adventurer{
     }
 
   }
+
+  public int getSpecialReq() {
+    return 8;
+  }
   /*Restores 5 special to other*/
   public String support(ArrayList<Adventurer> party, int target){
     return "Gives a coffee to "+party.get(target)+" and restores "

@@ -60,6 +60,9 @@ public class FireMage extends Adventurer{
       return "Not enough rage to call forth a flame pillar. Instead " + attack(enemies, other);
     }
   }
+  public int getSpecialReq() {
+    return 9;
+  }
 
   public String support(){
     int previousSpecial = this.getSpecial();

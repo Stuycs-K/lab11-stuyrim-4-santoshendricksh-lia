@@ -70,6 +70,9 @@ public class GaiaArcher extends Adventurer{
       return "Not enough energy to launch a barrage of arrows. Instead, " + this.attack(other);
     }
   }
+  public int getSpecialReq() {
+    return 10;
+  }
 
   public String support(){
     this.setHOT(3);
