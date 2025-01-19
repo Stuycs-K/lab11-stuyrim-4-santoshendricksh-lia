@@ -94,6 +94,6 @@ public class Boss extends Adventurer {
       enemies.get(target).applyDamage(enemies.get(target).getHP());
       return getName() + " used Lightning's Roar to kill " + enemies.get(target) + " instantly.";
     }
-    return getName() + " used Lightning's Roar, but failed to kill " + enemies.get(target).getName(); + ".";
+    return getName() + " used Lightning's Roar, but failed to kill " + enemies.get(target).getName() + ".";
   }
 }
