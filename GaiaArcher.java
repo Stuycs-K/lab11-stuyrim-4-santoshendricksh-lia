@@ -36,7 +36,8 @@ public class GaiaArcher extends Adventurer{
     }
   }
 
-  public String attack(ArrayList<Adventurer> enemies, Adventurer other){
+  public String attack(ArrayList<Adventurer> enemies, int target){
+    Adventurer other = enemies.get(target);
     int damage = (int) (Math.random() * 4) + 2;
     this.restoreSpecial(2);
     other.applyDamage(realDamage(damage));
@@ -60,14 +61,14 @@ public class GaiaArcher extends Adventurer{
   public String specialAttack(ArrayList<Adventurer> enemies, int other){
     if (this.getSpecial() >= 10){
       int damage = 5;
-      other.applyDamage(realDamage(damage));
-      other.setParalyzed(1);
-      other.setPoison(2);
-      other.setBurned(2);
+      enemies.get(other).applyDamage(realDamage(damage));
+      enemies.get(other).setParalyzed(1);
+      enemies.get(other).setPoison(2);
+      enemies.get(other).setBurned(2);
       return this + " launches a barrage of arrows, dealing 5 DMG to all enemies, and poisoning, burning, and paralyzing " + other +"!";
     }
     else{
-      return "Not enough energy to launch a barrage of arrows. Instead, " + this.attack(other);
+      return "Not enough energy to launch a barrage of arrows. Instead, " + this.attack(enemies, other);
     }
   }
   public int getSpecialReq() {
@@ -79,7 +80,8 @@ public class GaiaArcher extends Adventurer{
     return this + " is bestowed with the gift of nature, healing for 1 or 2 HP for the next three turns.";
   }
 
-  public String support(ArrayList<Adventurer> party, Adventurer other){
+  public String support(ArrayList<Adventurer> party, int target){
+    Adventurer other = party.get(target);
     other.setHP(other.getHP() + 1);
     other.setHOT(0);
     other.setBurned(0);
