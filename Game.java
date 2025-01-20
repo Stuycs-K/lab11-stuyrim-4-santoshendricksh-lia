@@ -235,22 +235,25 @@ public class Game{
           } catch (NumberFormatException e) {
             return false;
           }
-          if (target < 1) {
+          if (target < 1 || tokens.length > 2) {
+            Text.go(14, 14);
+            System.out.print(tokens.length);
+            Text.go(30, 2);
             return false;
           }
           if (choice.startsWith("a") || choice.equals("sp") ) {
-            if (target >= enemies.size()) {
+            if (target > enemies.size()) {
               return false;
             }
           }
           if (choice.startsWith("su")) {
-            if (target >= party.size()) {
+            if (target > party.size()) {
               return false;
             }
           }
 
 
-        }
+        } else if (! choice.startsWith("su"));
         return true;
       }
     }
@@ -350,39 +353,42 @@ public class Game{
       if(partyTurn){
         input = userInput(in, party, enemies);
 
-        //Process user input for the last Adventurer:
-        if(input.startsWith("attack ") || input.startsWith("a ")){
-          /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          //YOUR CODE HERE
-          String[] inputArray = input.split(" ");
-          action = party.get(whichPlayer).attack(enemies, Integer.parseInt(inputArray[1]) - 1);
-          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-        }
-        else if(input.startsWith("special ") || input.startsWith("sp ")){
-          /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          //YOUR CODE HERE
-          String[] inputArray = input.split(" ");
-          action = party.get(whichPlayer).specialAttack(enemies, Integer.parseInt(inputArray[1]) - 1);
-          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-        }
-        else if (input.equals("support")){
-          action = party.get(whichPlayer).support();
-        }
-        else if(input.startsWith("su ") || input.startsWith("support ")){
-          //"support 0" or "su 0" or "su 2" etc.
-          //assume the value that follows su  is an integer.
-          /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          //YOUR CODE HERE
-          String[] inputArray = input.split(" ");
-          if (party.get(whichPlayer).equals(party.get(Integer.parseInt(inputArray[1]) - 1))){
+        if (!(party.get(whichPlayer).paralyzedValue() > 0)) {
+          //Process user input for the last Adventurer:
+          if(input.startsWith("attack ") || input.startsWith("a ")){
+            /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+            //YOUR CODE HERE
+            String[] inputArray = input.split(" ");
+            action = party.get(whichPlayer).attack(enemies, Integer.parseInt(inputArray[1]) - 1);
+            /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+          }
+          else if(input.startsWith("special ") || input.startsWith("sp ")){
+            /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+            //YOUR CODE HERE
+            String[] inputArray = input.split(" ");
+            action = party.get(whichPlayer).specialAttack(enemies, Integer.parseInt(inputArray[1]) - 1);
+            /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+          }
+          else if (input.equals("support") || input.equals("su")){
             action = party.get(whichPlayer).support();
           }
-          else{
-            action = party.get(whichPlayer).support(party, Integer.parseInt(inputArray[1]) - 1);
-          }
+          else if(input.startsWith("su ") || input.startsWith("support ")){
+            //"support 0" or "su 0" or "su 2" etc.
+            //assume the value that follows su  is an integer.
+            /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+            //YOUR CODE HERE
+            String[] inputArray = input.split(" ");
+            if (party.get(whichPlayer).equals(party.get(Integer.parseInt(inputArray[1]) - 1))){
+              action = party.get(whichPlayer).support();
+            }
+            else{
+              action = party.get(whichPlayer).support(party, Integer.parseInt(inputArray[1]) - 1);
+            }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+          }
+        } else {
+          party.get(whichPlayer).setParalyzed(party.get(whichPlayer).paralyzedValue() - 1);
         }
-
         // check for deaths
         killDead(party);
         killDead(enemies);
@@ -432,7 +438,7 @@ public class Game{
           whichOpponent = 0;
         }
         //done with one party member
-      }else{
+      }else {
         //not the party turn!
 
 
@@ -443,22 +449,25 @@ public class Game{
         int target = (int) (Math.random() * (party.size()));
         int move = (int) (Math.random() * 2);
 
-        if (move == 0) { // attack
+        if (!(enemies.get(whichOpponent).paralyzedValue() > 0)) {
+          if (move == 0) { // attack
 
-          if (enemies.get(whichOpponent).getSpecial() >= enemies.get(whichOpponent).getSpecialReq()) {
-            action = enemies.get(whichOpponent).specialAttack(party, target);
-          } else {
-            action = enemies.get(whichOpponent).attack(party, target);
+            if (enemies.get(whichOpponent).getSpecial() >= enemies.get(whichOpponent).getSpecialReq()) {
+              action = enemies.get(whichOpponent).specialAttack(party, target);
+            } else {
+              action = enemies.get(whichOpponent).attack(party, target);
+            }
+          }  else if (move == 1) {
+            int supportTarget = (int) (Math.random() * enemies.size());
+            if (supportTarget == whichOpponent) {
+              action = enemies.get(whichOpponent).support();
+            } else {
+              action = enemies.get(whichOpponent).support(enemies, supportTarget);
+            }
           }
-        }  else if (move == 1) {
-          int supportTarget = (int) (Math.random() * enemies.size());
-          if (supportTarget == whichOpponent) {
-            action = enemies.get(whichOpponent).support();
-          } else {
-            action = enemies.get(whichOpponent).support(enemies, supportTarget);
-          }
+        } else {
+          enemies.get(whichOpponent).setParalyzed(enemies.get(whichOpponent).paralyzedValue() - 1);
         }
-
         killDead(party);
         killDead(enemies);
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
