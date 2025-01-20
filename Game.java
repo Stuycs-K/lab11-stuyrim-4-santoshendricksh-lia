@@ -216,10 +216,18 @@ public class Game{
     }
   }
 
-  public static boolean checkInputValid(String input) {
+  public static boolean checkInputValid(String input, ArrayList<Adventurer> party, ArrayList<Adventurer> enemies) {
     String[] actionList = {"attack ", "a ", "special ", "sp ", "support ", "su", "q", "quit"};
+    String[] tokens = input.split(" ");
+
+
+
+
+
+
     for (String choice : actionList) {
-      if (input.startsWith(choice)) {
+      if (token[0].equals(choice)) {
+        if ()
         return true;
       }
     }
