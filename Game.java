@@ -163,10 +163,12 @@ public class Game{
 
     drawBackground();
 
-    //draw player party
+    //draw enemy party
+    TextBox(2, 2, 78, 4, " ");
     drawParty(enemies, 2);
 
-    //draw enemy party
+    //draw player party
+    TextBox(25, 2, 78, 4, " ");
     drawParty(party, 25);
 
     Text.go(2, 30);
@@ -179,6 +181,15 @@ public class Game{
       //show cursor
       Text.showCursor();
       String input = in.nextLine();
+      while (!checkInputValid(input)) {
+        String errMsg = "Thats not a choice! Enter command: attack/special/quit";
+
+        TextBox(29, 2, 74, 1, errMsg);
+        TextBox(30,2,78,1," ");
+        Text.go(30,2);
+        input = in.nextLine();
+        
+      }
 
       //clear the text that was written
       TextBox(30,2,78,1," ");
@@ -264,13 +275,8 @@ public class Game{
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input
       
-      input = userInput(in);
-      while (!checkInputValid(input)) {
-        String errMsg = "Thats not a choice! Enter command for "+party.get(whichPlayer)+": attack/special/quit";
-
-        TextBox(29, 2, 74, 1, errMsg);
-        input = userInput(in);
-      }
+      
+      
 
       String action = new String();
 
@@ -279,6 +285,7 @@ public class Game{
 
       //display event based on last turn's input
       if(partyTurn){
+        input = userInput(in);
 
         //Process user input for the last Adventurer:
         if(input.startsWith("attack ") || input.startsWith("a ")){
@@ -309,7 +316,9 @@ public class Game{
         killDead(party);
         killDead(enemies);
 
+        // THIS IS WHERE IT WAS
         TextBox(8, 3, 76, 12, action);
+        drawScreen(enemies, party);
 
         //You should decide when you want to re-ask for user input
         //If no errors:
@@ -342,7 +351,7 @@ public class Game{
 
           String prompt = "press enter to see monster's turn";
           TextBox(29, 2, 78, 1, prompt);
-          userInput(in);
+          in.nextLine();
 
           partyTurn = false;
           whichOpponent = 0;
@@ -378,10 +387,13 @@ public class Game{
         killDead(party);
         killDead(enemies);
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+        TextBox(8, 3, 76, 12, action);
+        drawScreen(enemies, party);
 
 
         //Decide where to draw the following prompt:
         String prompt = "press enter to see next turn";
+        TextBox(29, 2, 78, 1, prompt);
 
         whichOpponent++;
 
@@ -406,9 +418,11 @@ public class Game{
         partyTurn=true;
         //display this prompt before player's turn
         String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+        TextBox(29, 2, 78, 1, prompt);
       }
 
       //display the updated screen after input has been processed.
+      TextBox(8, 3, 76, 12, action);
       drawScreen(enemies, party);
 
 
