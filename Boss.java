@@ -45,10 +45,10 @@ public class Boss extends Adventurer {
         int rand2 = (int) (Math.random() * 100);
         if (rand2 < 50) {
           enemies.get(i).setBurned(2);
-          ret += " " + enemies.get(i).getName() + "was also burned.";
+          ret += " " + enemies.get(i).getName() + " was also burned.";
         } else if (rand2 < 75) {
           enemies.get(i).setParalyzed(1);
-          ret += " " + enemies.get(i).getName() + "was also paralyzed.";
+          ret += " " + enemies.get(i).getName() + " was also paralyzed.";
         }
       } else {
         enemies.get(i).applyDamage(realDamage(3));
@@ -87,7 +87,7 @@ public class Boss extends Adventurer {
       String earlyRet = attack (enemies, target);
       return "Did not have enough Tainted Photons to use Lightning's Roar. Instead, " + earlyRet;
     }
-    
+
     photons = 0;
     int rand = (int) (Math.random() * 10);
     if (rand < 3) {

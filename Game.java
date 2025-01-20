@@ -277,10 +277,13 @@ public class Game{
     ArrayList<Adventurer> party = new ArrayList<>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    FireMage p1 = new FireMage("henry");
-    CodeWarrior p2 = new CodeWarrior("Santos");
+    Scanner in = new Scanner(System.in);
+    FireMage p1 = new FireMage("Fire Mage");
+    WaterSorceress p2 = new WaterSorceress("Water Sorceress");
+    GaiaArcher p3 = new GaiaArcher("Gaia's Archer");
     party.add(p1);
     party.add(p2);
+    party.add(p3);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     boolean partyTurn = true;
@@ -288,7 +291,6 @@ public class Game{
     int whichOpponent = 0;
     int turn = 0;
     String input = "";//blank to get into the main loop.
-    Scanner in = new Scanner(System.in);
     //Draw the window border
 
     //You can add parameters to draw screen!
@@ -321,14 +323,14 @@ public class Game{
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           String[] inputArray = input.split(" ");
-          action = party.get(whichPlayer).attack(enemies, Integer.parseInt(inputArray[1]));
+          action = party.get(whichPlayer).attack(enemies, Integer.parseInt(inputArray[1]) - 1);
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.startsWith("special ") || input.startsWith("sp ")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           String[] inputArray = input.split(" ");
-          action = party.get(whichPlayer).specialAttack(enemies, Integer.parseInt(inputArray[1]));
+          action = party.get(whichPlayer).specialAttack(enemies, Integer.parseInt(inputArray[1]) - 1);
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
@@ -337,7 +339,7 @@ public class Game{
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           String[] inputArray = input.split(" ");
-          action = party.get(whichPlayer).support(party, Integer.parseInt(inputArray[1]));
+          action = party.get(whichPlayer).support(party, Integer.parseInt(inputArray[1]) - 1);
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
 
