@@ -217,11 +217,24 @@ public class Game{
   }
 
   public static boolean checkInputValid(String input) {
-    String[] actionList = {"attack ", "a ", "special ", "sp ", "support ", "su"};
+    String[] actionList = {"attack ", "a ", "special ", "sp ", "support ", "su", "q", "quit"};
     for (String choice : actionList) {
       if (input.startsWith(choice)) {
         return true;
       }
+    }
+    return false;
+  }
+
+  public static boolean winOrLose(ArrayList<Adventurer> players, ArrayList<Adventurer> enemies) {
+    if (players.size() == 0) {
+      TextBox(2,2,78, 29, " ");
+      drawText("Tough luck -- you lost. Better luck next time", 14, 4);
+      return true;
+    } else if (enemies.size() == 0) {
+      TextBox(2,2,78, 29, " ");
+      drawText("Congrats! You won! Good job.", 14, 27);
+      return true;
     }
     return false;
   }
@@ -240,7 +253,9 @@ public class Game{
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     FireMage boss = new FireMage("Big Randy");
+    GaiaArcher boss2 = new GaiaArcher("Lil' Randy");
     enemies.add(boss);
+    enemies.add(boss2);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
@@ -281,7 +296,7 @@ public class Game{
       String action = new String();
 
       //example debug statment
-      TextBox(2,24,78,1,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
+      //TextBox(2,24,78,1,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
       //display event based on last turn's input
       if(partyTurn){
@@ -319,6 +334,10 @@ public class Game{
         // THIS IS WHERE IT WAS
         TextBox(8, 3, 76, 12, action);
         drawScreen(enemies, party);
+        if (winOrLose(party, enemies)) {
+          quit();
+          return;
+        }
 
         //You should decide when you want to re-ask for user input
         //If no errors:
@@ -389,11 +408,16 @@ public class Game{
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         TextBox(8, 3, 76, 12, action);
         drawScreen(enemies, party);
+        if (winOrLose(party, enemies)) {
+          quit();
+          return;
+        }
 
 
         //Decide where to draw the following prompt:
         String prompt = "press enter to see next turn";
         TextBox(29, 2, 78, 1, prompt);
+        in.nextLine();
 
         whichOpponent++;
 
@@ -427,7 +451,6 @@ public class Game{
 
 
     }//end of main game loop
-
 
     //After quit reset things:
     quit();
