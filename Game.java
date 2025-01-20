@@ -7,8 +7,7 @@ public class Game{
 
   public static void main(String[] args) {
     Text.clear();
-    //drawText("yo mama fat", 4, 5);
-    //TextBox(4,4,5,16, "jesus christ i was walking through the store and got jumped");
+
     // drawBackground();
     // ArrayList<Adventurer> party = new ArrayList<>();
     // /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -188,7 +187,7 @@ public class Game{
         TextBox(30,2,78,1," ");
         Text.go(30,2);
         input = in.nextLine();
-        
+
       }
 
       //clear the text that was written
@@ -252,10 +251,25 @@ public class Game{
     ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    FireMage boss = new FireMage("Big Randy");
-    GaiaArcher boss2 = new GaiaArcher("Lil' Randy");
-    enemies.add(boss);
-    enemies.add(boss2);
+    int random = (int) (Math.random() * 4);
+    if (random == 0){
+      Boss boss = new Boss();
+      enemies.add(boss);
+    }
+    else if (random == 1){
+      FireMage enemyOne = new FireMage();
+      enemies.add(enemyOne);
+      WaterSorceress enemyTwo = new WaterSorceress();
+      enemies.add(enemyTwo);
+    }
+    else{
+      FireMage enemyOne = new FireMage();
+      enemies.add(enemyOne);
+      WaterSorceress enemyTwo = new WaterSorceress();
+      enemies.add(enemyTwo);
+      GaiaArcher enemyThree = new GaiaArcher();
+      enemies.add(enemyThree);
+    }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
@@ -289,9 +303,9 @@ public class Game{
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input
-      
-      
-      
+
+
+
 
       String action = new String();
 
