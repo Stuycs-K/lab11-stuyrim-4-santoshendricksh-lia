@@ -333,13 +333,21 @@ public class Game{
           action = party.get(whichPlayer).specialAttack(enemies, Integer.parseInt(inputArray[1]) - 1);
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
+        else if (input.equals("support")){
+          action = party.get(whichPlayer).support();
+        }
         else if(input.startsWith("su ") || input.startsWith("support ")){
           //"support 0" or "su 0" or "su 2" etc.
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           String[] inputArray = input.split(" ");
-          action = party.get(whichPlayer).support(party, Integer.parseInt(inputArray[1]) - 1);
+          if (party.get(whichPlayer).equals(party.get(Integer.parseInt(inputArray[1]) - 1))){
+            action = party.get(whichPlayer).support();
+          }
+          else{
+            action = party.get(whichPlayer).support(party, Integer.parseInt(inputArray[1]) - 1);
+          }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
 
