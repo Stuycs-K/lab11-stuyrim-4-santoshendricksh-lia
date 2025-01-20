@@ -7,8 +7,7 @@ public class Game{
 
   public static void main(String[] args) {
     Text.clear();
-    //drawText("yo mama fat", 4, 5);
-    //TextBox(4,4,5,16, "jesus christ i was walking through the store and got jumped");
+
     // drawBackground();
     // ArrayList<Adventurer> party = new ArrayList<>();
     // /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -188,7 +187,7 @@ public class Game{
         TextBox(30,2,78,1," ");
         Text.go(30,2);
         input = in.nextLine();
-        
+
       }
 
       //clear the text that was written
@@ -260,10 +259,25 @@ public class Game{
     ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    FireMage boss = new FireMage("Big Randy");
-    GaiaArcher boss2 = new GaiaArcher("Lil' Randy");
-    enemies.add(boss);
-    enemies.add(boss2);
+    int random = (int) (Math.random() * 4);
+    if (random == 0){
+      Boss boss = new Boss();
+      enemies.add(boss);
+    }
+    else if (random == 1){
+      FireMage enemyOne = new FireMage();
+      enemies.add(enemyOne);
+      WaterSorceress enemyTwo = new WaterSorceress();
+      enemies.add(enemyTwo);
+    }
+    else{
+      FireMage enemyOne = new FireMage();
+      enemies.add(enemyOne);
+      WaterSorceress enemyTwo = new WaterSorceress();
+      enemies.add(enemyTwo);
+      GaiaArcher enemyThree = new GaiaArcher();
+      enemies.add(enemyThree);
+    }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
@@ -271,10 +285,13 @@ public class Game{
     ArrayList<Adventurer> party = new ArrayList<>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    FireMage p1 = new FireMage("henry");
-    CodeWarrior p2 = new CodeWarrior("Santos");
+    Scanner in = new Scanner(System.in);
+    FireMage p1 = new FireMage("Fire Mage");
+    WaterSorceress p2 = new WaterSorceress("Water Sorceress");
+    GaiaArcher p3 = new GaiaArcher("Gaia's Archer");
     party.add(p1);
     party.add(p2);
+    party.add(p3);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     boolean partyTurn = true;
@@ -282,7 +299,6 @@ public class Game{
     int whichOpponent = 0;
     int turn = 0;
     String input = "";//blank to get into the main loop.
-    Scanner in = new Scanner(System.in);
     //Draw the window border
 
     //You can add parameters to draw screen!
@@ -297,9 +313,9 @@ public class Game{
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input
-      
-      
-      
+
+
+
 
       String action = new String();
 
@@ -315,15 +331,18 @@ public class Game{
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           String[] inputArray = input.split(" ");
-          action = party.get(whichPlayer).attack(enemies, Integer.parseInt(inputArray[1]));
+          action = party.get(whichPlayer).attack(enemies, Integer.parseInt(inputArray[1]) - 1);
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.startsWith("special ") || input.startsWith("sp ")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           String[] inputArray = input.split(" ");
-          action = party.get(whichPlayer).specialAttack(enemies, Integer.parseInt(inputArray[1]));
+          action = party.get(whichPlayer).specialAttack(enemies, Integer.parseInt(inputArray[1]) - 1);
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+        }
+        else if (input.equals("support")){
+          action = party.get(whichPlayer).support();
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
           //"support 0" or "su 0" or "su 2" etc.
@@ -331,7 +350,12 @@ public class Game{
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           String[] inputArray = input.split(" ");
-          action = party.get(whichPlayer).support(party, Integer.parseInt(inputArray[1]));
+          if (party.get(whichPlayer).equals(party.get(Integer.parseInt(inputArray[1]) - 1))){
+            action = party.get(whichPlayer).support();
+          }
+          else{
+            action = party.get(whichPlayer).support(party, Integer.parseInt(inputArray[1]) - 1);
+          }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
 
