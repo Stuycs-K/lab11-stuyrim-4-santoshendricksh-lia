@@ -174,13 +174,13 @@ public class Game{
 
   }
 
-  public static String userInput(Scanner in){
+  public static String userInput(Scanner in, ArrayList<Adventurer> party, ArrayList<Adventurer> enemies){
       //Move cursor to prompt location
       Text.go(30,2);
       //show cursor
       Text.showCursor();
       String input = in.nextLine();
-      while (!checkInputValid(input)) {
+      while (!checkInputValid(input, party, enemies)) {
         String errMsg = "Thats not a choice! Enter command: attack/special/quit";
 
         TextBox(29, 2, 74, 1, errMsg);
@@ -216,7 +216,7 @@ public class Game{
   }
 
   public static boolean checkInputValid(String input, ArrayList<Adventurer> party, ArrayList<Adventurer> enemies) {
-    String[] actionList = {"attack ", "a ", "special ", "sp ", "support ", "su", "q", "quit"};
+    String[] actionList = {"attack", "a", "special", "sp", "support", "su", "q", "quit"};
     String[] tokens = input.split(" ");
 
 
@@ -225,8 +225,32 @@ public class Game{
 
 
     for (String choice : actionList) {
-      if (token[0].equals(choice)) {
-        if ()
+      if (tokens[0].equals(choice)) {
+        if (choice.charAt(0) == 'q' && tokens.length == 1) {
+          return true;
+        } else if (tokens.length > 1) {
+          int target;
+          try {
+            target = Integer.parseInt(tokens[1]);
+          } catch (NumberFormatException e) {
+            return false;
+          }
+          if (target < 1) {
+            return false;
+          }
+          if (choice.startsWith("a") || choice.equals("sp") ) {
+            if (target >= enemies.size()) {
+              return false;
+            }
+          }
+          if (choice.startsWith("su")) {
+            if (target >= party.size()) {
+              return false;
+            }
+          }
+
+
+        }
         return true;
       }
     }
@@ -324,7 +348,7 @@ public class Game{
 
       //display event based on last turn's input
       if(partyTurn){
-        input = userInput(in);
+        input = userInput(in, party, enemies);
 
         //Process user input for the last Adventurer:
         if(input.startsWith("attack ") || input.startsWith("a ")){
