@@ -469,7 +469,9 @@ public class Game{
 
 
           String prompt = "press enter to see monster's turn";
+
           TextBox(29, 2, 78, 1, prompt);
+          Text.go(30,2);
           in.nextLine();
 
           partyTurn = false;
@@ -536,6 +538,7 @@ public class Game{
         //Decide where to draw the following prompt:
         String prompt = "press enter to see next turn";
         TextBox(29, 2, 78, 1, prompt);
+        Text.go(30,2);
         in.nextLine();
 
         whichOpponent++;
