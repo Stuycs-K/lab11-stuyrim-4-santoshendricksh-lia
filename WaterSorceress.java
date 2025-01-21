@@ -16,7 +16,7 @@ public class WaterSorceress extends Adventurer{
   }
 
   public String getSpecialName(){
-    return "dewdrops";
+    return "Dewdrops";
   }
 
   public int getSpecial(){
@@ -39,19 +39,23 @@ public class WaterSorceress extends Adventurer{
   public String attack(ArrayList<Adventurer> enemies, int target){
     Adventurer other = enemies.get(target);
     int damage = 2;
-    other.applyDamage(realDamage(damage));
+    int realDamage = this.realDamage(damage);
+    other.applyDamage(realDamage);
     this.restoreSpecial(3);
     other.setDmgDebuff(2); //change documentation in github to reflect this nerf
-    return this + " calls forth an acid waterfall upon " + other + ", dealing 2 DMG! " + other + " deals 2 less DMG the next round. Furthermore, " + this + " gains 3 dewdrops.";
+    return this + " calls forth an acid waterfall upon " + other + ", dealing " + realDamage + "! " + other + " deals 2 less DMG the next round. Furthermore, " + this + " gains 3 dewdrops!";
   }
 
   public String specialAttack(ArrayList<Adventurer> enemies, int target){
     Adventurer other = enemies.get(target);
     if (this.getSpecial() >= 8){
       this.setSpecial(this.getSpecial() - 8);
-      int damage = 3;
-      other.applyDamage(realDamage(damage)); //add implementation so that it targets all ENEMIES
-      return this + " summons a drowning vortex, dealing 3 DMG to all enemies and making them take 1.4x DMG the next turn!";
+      int damage = 4;
+      int realDamage = this.realDamage(damage);
+      for (int count = 0; count < enemies.size(); count++){
+          enemies.get(count).applyDamage(realDamage);
+      }
+      return this + " summons a drowning vortex, dealing " + realDamage + " DMG to all enemies!";
     }
     else{
       return "Not enough dewdrops to summon a drowning vortex. Instead, " + this.attack(enemies, target);

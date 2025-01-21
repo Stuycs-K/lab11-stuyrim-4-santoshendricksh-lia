@@ -16,7 +16,7 @@ public class GaiaArcher extends Adventurer{
   }
 
   public String getSpecialName(){
-    return "energy";
+    return "Energy";
   }
 
   public int getSpecial(){
@@ -39,8 +39,9 @@ public class GaiaArcher extends Adventurer{
   public String attack(ArrayList<Adventurer> enemies, int target){
     Adventurer other = enemies.get(target);
     int damage = (int) (Math.random() * 4) + 2;
+    int realDamage = this.realDamage(damage);
     this.restoreSpecial(2);
-    other.applyDamage(realDamage(damage));
+    other.applyDamage(realDamage);
     double randomEffect = Math.random();
     String status = "";
     if (randomEffect <= 0.33){
@@ -55,17 +56,18 @@ public class GaiaArcher extends Adventurer{
       other.setBurned(2);
       status = other + " is burned!";
     }
-    return this + " shoots an arrow at " + other + ", dealing " + damage + " damage." + " " + status + " In addition, " + this + " gains 2 Energy.";
+    return this + " shoots an arrow at " + other + ", dealing " + realDamage + " damage." + " " + status + " In addition, " + this + " gains 2 Energy.";
   }
 
   public String specialAttack(ArrayList<Adventurer> enemies, int other){
     if (this.getSpecial() >= 10){
       int damage = 5;
-      enemies.get(other).applyDamage(realDamage(damage));
+      int realDamage = this.realDamage(damage);
+      enemies.get(other).applyDamage(realDamage);
       enemies.get(other).setParalyzed(1);
       enemies.get(other).setPoison(2);
       enemies.get(other).setBurned(2);
-      return this + " launches a barrage of arrows, dealing 5 DMG to all enemies, and poisoning, burning, and paralyzing " + other +"!";
+      return this + " launches a barrage of arrows, dealing " + realDamage + " DMG to all enemies, and poisoning, burning, and paralyzing " + other +"!";
     }
     else{
       return "Not enough energy to launch a barrage of arrows. Instead, " + this.attack(enemies, other);
