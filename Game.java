@@ -228,7 +228,11 @@ public class Game{
       if (tokens[0].equals(choice)) {
         if (choice.charAt(0) == 'q' && tokens.length == 1) {
           return true;
-        } else if (tokens.length > 1) {
+        }
+        else if (tokens.length == 1){
+          return false;
+        }
+         else if (tokens.length > 1) {
           int target;
           try {
             target = Integer.parseInt(tokens[1]);
@@ -241,19 +245,19 @@ public class Game{
             Text.go(30, 2);
             return false;
           }
-          if (choice.startsWith("a") || choice.equals("sp") ) {
+          if (choice.startsWith("a ") || choice.equals("sp ") ) {
             if (target > enemies.size()) {
               return false;
             }
           }
-          if (choice.startsWith("su")) {
+          if (choice.startsWith("su ")) {
             if (target > party.size()) {
               return false;
             }
           }
 
 
-        } else if (! choice.startsWith("su"));
+        } else if (! choice.startsWith("su "));
         return true;
       }
     }
@@ -318,7 +322,7 @@ public class Game{
     GaiaArcher p2 = new GaiaArcher("Gaia's Archer");
     party.add(p1);
     party.add(p2);
-    if (random != 0){
+    if (random != 1){
       party.add(p3);
     }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -363,7 +367,7 @@ public class Game{
         }
         if (party.get(whichPlayer).getHot() > 0) {
           party.get(whichPlayer).setHOT(party.get(whichPlayer).getHot() - 1);
-          party.get(whichPlayer).setHP(party.get(whichPlayer).getHot() + (int) (Math.random() * 3));
+          party.get(whichPlayer).setHP(party.get(whichPlayer).getHP() + (int) (Math.random() * 3));
         }
         killDead(party);
         killDead(enemies);
@@ -485,12 +489,7 @@ public class Game{
         } else {
           enemies.get(whichOpponent).setParalyzed(enemies.get(whichOpponent).paralyzedValue() - 1);
         }
-        if (enemies.get(whichOpponent).poisonedValue() > 0) {
-            enemies.get(whichOpponent).setPoison(enemies.get(whichOpponent).poisonedValue() - 1);
-          }
-          if (enemies.get(whichOpponent).burnedValue() > 0) {
-            enemies.get(whichOpponent).setBurned(enemies.get(whichOpponent).burnedValue() - 1);
-          }
+
         // check for deaths
         killDead(party);
         killDead(enemies);
@@ -517,16 +516,7 @@ public class Game{
       if(!partyTurn && whichOpponent >= enemies.size()){
         //THIS BLOCK IS TO END THE ENEMY TURN
         //It only triggers after the last enemy goes.
-        for (int i = 0; i < enemies.size(); i++) {
-          if (enemies.get(i).poisonedValue() > 0) {
-            enemies.get(i).applyDamage(1);
-            enemies.get(i).setPoison(enemies.get(i).poisonedValue() - 1);
-          }
-          if (enemies.get(i).burnedValue() > 0) {
-            enemies.get(i).applyDamage(2);
-            enemies.get(i).setBurned(enemies.get(i).burnedValue() - 1);
-          }
-        }
+
         whichPlayer = 0;
         turn++;
         partyTurn=true;

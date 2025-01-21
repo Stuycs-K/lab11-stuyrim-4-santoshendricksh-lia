@@ -38,7 +38,7 @@ public class Boss extends Adventurer {
 
   public String attack(ArrayList<Adventurer> enemies, int target) {
     int rand = target;
-    String ret = getName() + "used Thunder Pulse, dealing 3 damage to " + enemies.get(rand).getName() + " and 2 to the rest.";
+    String ret = getName() + " used Thunder Pulse, dealing 3 DMG to " + enemies.get(rand).getName() + " and 2 DMG to all other enemies.";
     for (int i = 0; i < enemies.size(); i++) {
       if (i == rand) {
         enemies.get(i).applyDamage(realDamage(3));
@@ -54,6 +54,7 @@ public class Boss extends Adventurer {
         enemies.get(i).applyDamage(realDamage(3));
       }
     }
+    this.photons++;
     return ret;
   }
 
@@ -78,7 +79,7 @@ public class Boss extends Adventurer {
       Random rng = new Random();
       setDmgAmp(rng.nextDouble() + 1.5);
     }
-    return this.getName() + " used Flash Forward, gaining a Tainted Photon and buffing himself";
+    return this.getName() + " used Flash Forward, gaining a Tainted Photon and buffing himself!";
   }
 
   //hurt or hinder the target adventurer, consume some special resource
