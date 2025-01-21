@@ -37,7 +37,7 @@ public class Boss extends Adventurer {
   }
 
   public String attack(ArrayList<Adventurer> enemies, int target) {
-    if (this.getSpecial() == 3){
+    if (this.getSpecial() >= 3){
       return specialAttack(enemies, target);
     }
     Adventurer other = enemies.get(target);
@@ -62,7 +62,9 @@ public class Boss extends Adventurer {
         }
       }
     }
-    this.photons++;
+    if (this.getSpecial() < this.getSpecialMax()){
+      this.setSpecial(this.getSpecial() + 1);
+    }
     return ret;
   }
 
@@ -79,7 +81,9 @@ public class Boss extends Adventurer {
 
   //heal or buff self
   public String support() {
-    photons++;
+    if (this.getSpecial() < this.getSpecialMax()){
+      this.setSpecial(this.getSpecial() + 1);
+    }
     int rand = (int)(Math.random() * 2);
     if (rand == 0) {
       setDmgBuff((int) (Math.random() * 4) + 2);
