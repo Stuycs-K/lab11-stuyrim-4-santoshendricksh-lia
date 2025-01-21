@@ -181,7 +181,7 @@ public class Game{
       Text.showCursor();
       String input = in.nextLine();
       while (!checkInputValid(input, party, enemies)) {
-        String errMsg = "Thats not a choice! Enter command: attack/special/quit";
+        String errMsg = "Thats not a choice! Enter command: attack #/ support (#)/ special #/quit";
 
         TextBox(29, 2, 74, 1, errMsg);
         TextBox(30,2,78,1," ");
@@ -314,11 +314,13 @@ public class Game{
     //YOUR CODE HERE
     Scanner in = new Scanner(System.in);
     FireMage p1 = new FireMage("Fire Mage");
-    WaterSorceress p2 = new WaterSorceress("Water Sorceress");
-    GaiaArcher p3 = new GaiaArcher("Gaia's Archer");
+    WaterSorceress p3 = new WaterSorceress("Water Sorceress");
+    GaiaArcher p2 = new GaiaArcher("Gaia's Archer");
     party.add(p1);
     party.add(p2);
-    party.add(p3);
+    if (random != 0){
+      party.add(p3);
+    }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     boolean partyTurn = true;
@@ -334,7 +336,7 @@ public class Game{
     //Main loop
 
     //display this prompt at the start of the game.
-    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack #/ support (#)/ special #/quit";
 
     TextBox(29, 2, 74, 1, preprompt);
 
@@ -409,7 +411,7 @@ public class Game{
         if(whichPlayer < party.size()){
           //This is a player turn.
           //Decide where to draw the following prompt:
-          String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+          String prompt = "Enter command for "+party.get(whichPlayer)+": attack #/ support (#)/ special #/quit";
           //drawText(prompt, 29, 2);
           TextBox(29, 2, 78, 1, prompt);
 
@@ -506,7 +508,7 @@ public class Game{
         turn++;
         partyTurn=true;
         //display this prompt before player's turn
-        String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+        String prompt = "Enter command for "+party.get(whichPlayer)+": attack # / support (#) / special # /quit";
         TextBox(29, 2, 78, 1, prompt);
       }
 

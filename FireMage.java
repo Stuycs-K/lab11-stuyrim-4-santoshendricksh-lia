@@ -16,7 +16,7 @@ public class FireMage extends Adventurer{
   }
 
   public String getSpecialName(){
-    return "rage";
+    return "Rage";
   }
 
   public int getSpecial(){
@@ -39,10 +39,11 @@ public class FireMage extends Adventurer{
   public String attack(ArrayList<Adventurer> enemies, int target){
     Adventurer other = enemies.get(target);
     int damage = (int)(Math.random() * 5) + 3;
+    int realDamage = this.realDamage(damage);
     other.setBurned(2);
-    other.applyDamage(this.realDamage(damage));
+    other.applyDamage(realDamage);
     this.restoreSpecial(2);
-    return this + " launches a barrage of fireballs at " + other + " and deals " + damage + " DMG! " + other + " is burned. In addition, " + this + " gains 2 rage.";
+    return this + " launches a barrage of fireballs at " + other + " and deals " + realDamage + " DMG! " + other + " is burned. In addition, " + this + " gains 2 Rage!";
   }
 
   public String specialAttack(ArrayList<Adventurer> enemies, int target){
@@ -50,13 +51,16 @@ public class FireMage extends Adventurer{
     if (getSpecial() >= 9){
       this.setSpecial(this.getSpecial() - 9);
       int damage = 10;
-      other.applyDamage(this.realDamage(damage));
+      int realDamage = this.realDamage(damage);
+      int AOEDamage = 3;
+      int realDamageAOE = this.realDamage(AOEDamage);
+      other.applyDamage(realDamage);
       for (int count = 0; count < enemies.size(); count++){
         if (!enemies.get(count).equals(other)){
-          enemies.get(count).applyDamage(this.realDamage(3));
+          enemies.get(count).applyDamage(realDamageAOE);
         }
       }
-      return this + " calls forth a flame pillar, dealing 10 DMG to " + other + " and 3 DMG to "; //alive enemies;
+      return this + " calls forth a flame pillar, dealing " + realDamage + " DMG to " + other + " and " + realDamageAOE + " DMG to all other enemies.";
     }
     else{
       return "Not enough rage to call forth a flame pillar. Instead " + attack(enemies, target);
