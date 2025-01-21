@@ -50,7 +50,7 @@ public class WaterSorceress extends Adventurer{
     Adventurer other = enemies.get(target);
     if (this.getSpecial() >= 8){
       this.setSpecial(this.getSpecial() - 8);
-      int damage = 4;
+      int damage = 6;
       int realDamage = this.realDamage(damage);
       for (int count = 0; count < enemies.size(); count++){
           enemies.get(count).applyDamage(realDamage);

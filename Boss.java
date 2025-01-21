@@ -12,7 +12,7 @@ public class Boss extends Adventurer {
   }
 
   public Boss(String name){
-    this(name, 80);
+    this(name, 150);
   }
 
   public Boss(){
@@ -37,21 +37,29 @@ public class Boss extends Adventurer {
   }
 
   public String attack(ArrayList<Adventurer> enemies, int target) {
+    if (this.getSpecial() == 3){
+      return specialAttack(enemies, target);
+    }
+    Adventurer other = enemies.get(target);
     int rand = target;
-    String ret = getName() + " used Thunder Pulse, dealing 3 DMG to " + enemies.get(rand).getName() + " and 2 DMG to all other enemies.";
-    for (int i = 0; i < enemies.size(); i++) {
-      if (i == rand) {
-        enemies.get(i).applyDamage(realDamage(3));
-        int rand2 = (int) (Math.random() * 100);
-        if (rand2 < 50) {
-          enemies.get(i).setBurned(2);
-          ret += " " + enemies.get(i).getName() + " was also burned.";
-        } else if (rand2 < 75) {
-          enemies.get(i).setParalyzed(1);
-          ret += " " + enemies.get(i).getName() + " was also paralyzed.";
+    int damage = 6;
+    int damageAOE = 4;
+    int realDamage = this.realDamage(damage);
+    int realDamageAOE = this.realDamage(damageAOE);
+    String ret = getName() + " used Thunder Pulse, dealing " + realDamage + " DMG to " + enemies.get(rand).getName() + " and " + realDamageAOE + " DMG to all other enemies.";
+    for (int count = 0; count < enemies.size(); count++){
+      if (!enemies.get(count).equals(other)){
+        enemies.get(count).applyDamage(realDamageAOE);
+      }
+      else{
+        enemies.get(count).applyDamage(realDamage);
+        int random = (int) (Math.random() * 100);
+        if (random < 50){
+          other.setBurned(2);
         }
-      } else {
-        enemies.get(i).applyDamage(realDamage(3));
+        if (random < 25){
+          other.setParalyzed(1);
+        }
       }
     }
     this.photons++;
@@ -79,7 +87,7 @@ public class Boss extends Adventurer {
       Random rng = new Random();
       setDmgAmp(rng.nextDouble() + 1.5);
     }
-    return this.getName() + " used Flash Forward, gaining a Tainted Photon and buffing himself!";
+    return this.getName() + " used Flash Forward, gaining a Tainted Photon and giving himself a DMG Amp!";
   }
 
   //hurt or hinder the target adventurer, consume some special resource

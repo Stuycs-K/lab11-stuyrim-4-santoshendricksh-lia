@@ -229,7 +229,7 @@ public class Game{
         if (choice.charAt(0) == 'q' && tokens.length == 1) {
           return true;
         }
-        else if (tokens.length == 1){
+        else if (tokens.length == 1 && (!tokens[0].equalsIgnoreCase("su")) && (!tokens[0].equalsIgnoreCase("support"))){
           return false;
         }
          else if (tokens.length > 1) {
@@ -359,18 +359,7 @@ public class Game{
       if(partyTurn){
         input = userInput(in, party, enemies);
 
-        if (party.get(whichPlayer).poisonedValue() > 0) {
-          party.get(whichPlayer).applyDamage(1);
-        }
-        if (party.get(whichPlayer).burnedValue() > 0) {
-          party.get(whichPlayer).applyDamage(2);
-        }
-        if (party.get(whichPlayer).getHot() > 0) {
-          party.get(whichPlayer).setHOT(party.get(whichPlayer).getHot() - 1);
-          party.get(whichPlayer).setHP(party.get(whichPlayer).getHP() + (int) (Math.random() * 3));
-        }
-        killDead(party);
-        killDead(enemies);
+
         if (!(party.get(whichPlayer).paralyzedValue() > 0)) {
           //Process user input for the last Adventurer:
 
@@ -378,17 +367,27 @@ public class Game{
             /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
             //YOUR CODE HERE
             String[] inputArray = input.split(" ");
-            action = party.get(whichPlayer).attack(enemies, Integer.parseInt(inputArray[1]) - 1);
+            if ((Integer.parseInt(inputArray[1]) > enemies.size())){
+              action = party.get(whichPlayer).attack(enemies, 0);
+            }
+            else{
+              action = party.get(whichPlayer).attack(enemies, Integer.parseInt(inputArray[1]) - 1);
+            }
             /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
           }
           else if(input.startsWith("special ") || input.startsWith("sp ")){
             /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
             //YOUR CODE HERE
             String[] inputArray = input.split(" ");
-            action = party.get(whichPlayer).specialAttack(enemies, Integer.parseInt(inputArray[1]) - 1);
+            if ((Integer.parseInt(inputArray[1]) > enemies.size())){
+              action = party.get(whichPlayer).specialAttack(enemies, 0);
+            }
+            else{
+              action = party.get(whichPlayer).specialAttack(enemies, Integer.parseInt(inputArray[1]) - 1);
+            }
             /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
           }
-          else if (input.equals("support") || input.equals("su")){
+          else if (input.equalsIgnoreCase("support") || input.equalsIgnoreCase("su")){
             action = party.get(whichPlayer).support();
           }
           else if(input.startsWith("su ") || input.startsWith("support ")){
@@ -397,19 +396,39 @@ public class Game{
             /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
             //YOUR CODE HERE
             String[] inputArray = input.split(" ");
+            if ((Integer.parseInt(inputArray[1]) > enemies.size())){
+              action = party.get(whichPlayer).support();
+            }
+            else{
+
+
             if (party.get(whichPlayer).equals(party.get(Integer.parseInt(inputArray[1]) - 1))){
               action = party.get(whichPlayer).support();
             }
             else{
               action = party.get(whichPlayer).support(party, Integer.parseInt(inputArray[1]) - 1);
             }
+          }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
           }
+
         } else {
           party.get(whichPlayer).setParalyzed(party.get(whichPlayer).paralyzedValue() - 1);
         }
 
         // check for deaths
+        if (party.get(whichPlayer).poisonedValue() > 0) {
+          party.get(whichPlayer).applyDamage(1);
+          party.get(whichPlayer).setPoison(party.get(whichPlayer).poisonedValue() - 1);
+        }
+        if (party.get(whichPlayer).burnedValue() > 0) {
+          party.get(whichPlayer).applyDamage(2);
+          party.get(whichPlayer).setBurned(party.get(whichPlayer).burnedValue() - 1);
+        }
+        if (party.get(whichPlayer).getHot() > 0) {
+          party.get(whichPlayer).setHOT(party.get(whichPlayer).getHot() - 1);
+          party.get(whichPlayer).setHP(party.get(whichPlayer).getHP() + (int) (Math.random() * 1) + 1);
+        }
         killDead(party);
         killDead(enemies);
 
@@ -425,6 +444,13 @@ public class Game{
         //If no errors:
         whichPlayer++;
 
+        if (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit")){
+          Text.clear();
+          drawBackground();
+          drawText("GAME OVER! No winner this time!", 14, 4);
+          quit();
+          return;
+        }
 
         if(whichPlayer < party.size()){
           //This is a player turn.
@@ -434,7 +460,9 @@ public class Game{
           TextBox(29, 2, 78, 1, prompt);
 
 
-        }else{
+        }
+
+        else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
 
@@ -457,28 +485,17 @@ public class Game{
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
         //YOUR CODE HERE
         int target = (int) (Math.random() * (party.size()));
-        int move = (int) (Math.random() * 2);
-        if (enemies.get(whichOpponent).poisonedValue() > 0) {
-          enemies.get(whichOpponent).applyDamage(1);
-        }
-        if (enemies.get(whichOpponent).burnedValue() > 0) {
-          enemies.get(whichOpponent).applyDamage(2);
-        }
-        if (enemies.get(whichOpponent).getHot() > 0) {
-          enemies.get(whichOpponent).setHOT(enemies.get(whichOpponent).getHot() - 1);
-          enemies.get(whichOpponent).setHP(enemies.get(whichOpponent).getHot() + (int) (Math.random() * 3));
-        }
-        killDead(party);
-        killDead(enemies);
+        int move = (int) (Math.random() * 3);
+
         if (!(enemies.get(whichOpponent).paralyzedValue() > 0)) {
-          if (move == 0) { // attack
+          if (move == 0 || move == 1) { // attack
 
             if (enemies.get(whichOpponent).getSpecial() >= enemies.get(whichOpponent).getSpecialReq()) {
               action = enemies.get(whichOpponent).specialAttack(party, target);
             } else {
               action = enemies.get(whichOpponent).attack(party, target);
             }
-          }  else if (move == 1) {
+          }  else if (move == 2 ) {
             int supportTarget = (int) (Math.random() * enemies.size());
             if (supportTarget == whichOpponent) {
               action = enemies.get(whichOpponent).support();
@@ -490,7 +507,20 @@ public class Game{
           enemies.get(whichOpponent).setParalyzed(enemies.get(whichOpponent).paralyzedValue() - 1);
         }
 
+
         // check for deaths
+        if (enemies.get(whichOpponent).poisonedValue() > 0) {
+          enemies.get(whichOpponent).applyDamage(1);
+          enemies.get(whichOpponent).setPoison(enemies.get(whichOpponent).poisonedValue() - 1);
+        }
+        if (enemies.get(whichOpponent).burnedValue() > 0) {
+          enemies.get(whichOpponent).applyDamage(2);
+          enemies.get(whichOpponent).setBurned(enemies.get(whichOpponent).burnedValue() - 1);
+        }
+        if (enemies.get(whichOpponent).getHot() > 0) {
+          enemies.get(whichOpponent).setHOT(enemies.get(whichOpponent).getHot() - 1);
+          enemies.get(whichOpponent).setHP(enemies.get(whichOpponent).getHP() + (int) (Math.random() * 3));
+        }
         killDead(party);
         killDead(enemies);
 

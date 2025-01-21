@@ -59,18 +59,20 @@ public class GaiaArcher extends Adventurer{
     return this + " shoots an arrow at " + other + ", dealing " + realDamage + " damage." + " " + status + " In addition, " + this + " gains 2 Energy.";
   }
 
-  public String specialAttack(ArrayList<Adventurer> enemies, int other){
+  public String specialAttack(ArrayList<Adventurer> enemies, int target){
+    Adventurer other = enemies.get(target);
     if (this.getSpecial() >= 10){
+      this.setSpecial(this.getSpecial() - 10);
       int damage = 5;
       int realDamage = this.realDamage(damage);
-      enemies.get(other).applyDamage(realDamage);
-      enemies.get(other).setParalyzed(1);
-      enemies.get(other).setPoison(2);
-      enemies.get(other).setBurned(2);
+      enemies.get(target).applyDamage(realDamage);
+      enemies.get(target).setParalyzed(1);
+      enemies.get(target).setPoison(2);
+      enemies.get(target).setBurned(2);
       return this + " launches a barrage of arrows, dealing " + realDamage + " DMG to all enemies, and poisoning, burning, and paralyzing " + other +"!";
     }
     else{
-      return "Not enough energy to launch a barrage of arrows. Instead, " + this.attack(enemies, other);
+      return "Not enough energy to launch a barrage of arrows. Instead, " + this.attack(enemies, target);
     }
   }
   public int getSpecialReq() {

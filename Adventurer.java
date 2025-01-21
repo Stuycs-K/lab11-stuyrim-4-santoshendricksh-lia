@@ -32,6 +32,8 @@ public abstract class Adventurer{
 
   public int realDamage(int baseDamage){
     int toReturn = baseDamage;
+    toReturn = (int) (toReturn * this.dmgAmpValue());
+    this.setDmgAmp(1.0);
     toReturn += this.dmgBuffValue();
     this.setDmgBuff(0);
     toReturn -= this.dmgDebuffValue();
