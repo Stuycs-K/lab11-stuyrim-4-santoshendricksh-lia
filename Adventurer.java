@@ -33,7 +33,9 @@ public abstract class Adventurer{
   public int realDamage(int baseDamage){
     int toReturn = baseDamage;
     toReturn += this.dmgBuffValue();
+    this.setDmgBuff(0);
     toReturn -= this.dmgDebuffValue();
+    this.setDmgDebuff(0);
     if (this.poisonedValue() > 0){
       toReturn = (int) (toReturn * 0.8);
     }

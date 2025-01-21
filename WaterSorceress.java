@@ -43,7 +43,7 @@ public class WaterSorceress extends Adventurer{
     other.applyDamage(realDamage);
     this.restoreSpecial(3);
     other.setDmgDebuff(2); //change documentation in github to reflect this nerf
-    return this + " calls forth an acid waterfall upon " + other + ", dealing " + realDamage + "! " + other + " deals 2 less DMG the next round. Furthermore, " + this + " gains 3 dewdrops!";
+    return this + " calls forth an acid waterfall upon " + other + ", dealing " + realDamage + " DMG! " + other + " deals 2 less DMG the next round. Furthermore, " + this + " gains 3 dewdrops!";
   }
 
   public String specialAttack(ArrayList<Adventurer> enemies, int target){

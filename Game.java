@@ -355,8 +355,21 @@ public class Game{
       if(partyTurn){
         input = userInput(in, party, enemies);
 
+        if (party.get(whichPlayer).poisonedValue() > 0) {
+          party.get(whichPlayer).applyDamage(1);
+        }
+        if (party.get(whichPlayer).burnedValue() > 0) {
+          party.get(whichPlayer).applyDamage(2);
+        }
+        if (party.get(whichPlayer).getHot() > 0) {
+          party.get(whichPlayer).setHOT(party.get(whichPlayer).getHot() - 1);
+          party.get(whichPlayer).setHP(party.get(whichPlayer).getHot() + (int) (Math.random() * 3));
+        }
+        killDead(party);
+        killDead(enemies);
         if (!(party.get(whichPlayer).paralyzedValue() > 0)) {
           //Process user input for the last Adventurer:
+
           if(input.startsWith("attack ") || input.startsWith("a ")){
             /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
             //YOUR CODE HERE
@@ -391,6 +404,7 @@ public class Game{
         } else {
           party.get(whichPlayer).setParalyzed(party.get(whichPlayer).paralyzedValue() - 1);
         }
+
         // check for deaths
         killDead(party);
         killDead(enemies);
@@ -420,17 +434,7 @@ public class Game{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
 
-          // checking for status effects
-          for (int i = 0; i < party.size(); i++) {
-            if (party.get(i).poisonedValue() > 0) {
-              party.get(i).applyDamage(1);
-              party.get(i).setPoison(party.get(i).poisonedValue() - 1);
-            }
-            if (party.get(i).burnedValue() > 0) {
-              party.get(i).applyDamage(2);
-              party.get(i).setBurned(party.get(i).burnedValue() - 1);
-            }
-          }
+
 
           String prompt = "press enter to see monster's turn";
           TextBox(29, 2, 78, 1, prompt);
@@ -450,7 +454,18 @@ public class Game{
         //YOUR CODE HERE
         int target = (int) (Math.random() * (party.size()));
         int move = (int) (Math.random() * 2);
-
+        if (enemies.get(whichOpponent).poisonedValue() > 0) {
+          enemies.get(whichOpponent).applyDamage(1);
+        }
+        if (enemies.get(whichOpponent).burnedValue() > 0) {
+          enemies.get(whichOpponent).applyDamage(2);
+        }
+        if (enemies.get(whichOpponent).getHot() > 0) {
+          enemies.get(whichOpponent).setHOT(enemies.get(whichOpponent).getHot() - 1);
+          enemies.get(whichOpponent).setHP(enemies.get(whichOpponent).getHot() + (int) (Math.random() * 3));
+        }
+        killDead(party);
+        killDead(enemies);
         if (!(enemies.get(whichOpponent).paralyzedValue() > 0)) {
           if (move == 0) { // attack
 
@@ -470,8 +485,16 @@ public class Game{
         } else {
           enemies.get(whichOpponent).setParalyzed(enemies.get(whichOpponent).paralyzedValue() - 1);
         }
+        if (enemies.get(whichOpponent).poisonedValue() > 0) {
+            enemies.get(whichOpponent).setPoison(enemies.get(whichOpponent).poisonedValue() - 1);
+          }
+          if (enemies.get(whichOpponent).burnedValue() > 0) {
+            enemies.get(whichOpponent).setBurned(enemies.get(whichOpponent).burnedValue() - 1);
+          }
+        // check for deaths
         killDead(party);
         killDead(enemies);
+
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         TextBox(8, 3, 76, 12, action);
         drawScreen(enemies, party);
